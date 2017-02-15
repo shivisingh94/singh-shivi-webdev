@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Widget</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../css/style.css" rel="stylesheet"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="page-list.view.client.html" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Edit Page
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget(widget)" href="page-list.view.client.html" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+<>
+<div class="container-fluid">
+
+    <div ng-switch="widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <ng-include src="'widget-heading.view.client.html'"/>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src="'widget-image.view.client.html'"/>
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <ng-include src="'widget-youtube.view.client.html'"/>
+        </div>
+    </div>
+
+    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block" href="page-list.view.client.html">
+        Delete
+    </a>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="../../user/templates/profile.view.client.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+
+
+</body>
+</html>

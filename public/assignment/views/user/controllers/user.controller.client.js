@@ -12,6 +12,7 @@
         vm.login = login;
 
         function init() {
+
         }
         init();
 
@@ -23,5 +24,40 @@
                 vm.error = "User not found";
             }
         }
+    }
+
+    function registerController($routeParams, UserService) {
+        var vm = this;
+        vm.userId = $routeParams["uid"];
+        vm.createUser=createUser;
+
+        function createUser(user) {
+            UserService.createUser(user);
+        }
+
+
+    }
+
+    function profileController($routeParams, UserService) {
+        var vm = this;
+
+        vm.userId = $routeParams["uid"];
+        vm.updateUser = updateUser;
+
+        function init() {
+            vm.user = UserService.findUserById(vm.userId);
+
+        }
+        init();
+
+
+        function updateUser(user) {
+            UserService.updateUser(vm.userId, user);
+
+        }
+        //function deleteUser() {
+        //    UserService.deleteUser(vm.userId);
+        //}
+
     }
 })();

@@ -69,7 +69,7 @@
         function deleteUser(userId) {
             for(var u in users) {
                 if(user[u]._id == userId) {
-                    user[u].remove;
+                    users.splice(u,1);
                     break;
                 }
             }

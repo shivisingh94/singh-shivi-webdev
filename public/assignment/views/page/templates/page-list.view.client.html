@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Website</title>
+    <title>Page List</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../../css/style.css" rel="stylesheet"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="page-new.html" class="navbar-link">
+            <a href="page-new.view.client.html" class="navbar-link">
                 <span class="glyphicon glyphicon-plus"></span>
                 </span>
             </a>
@@ -33,46 +33,16 @@
 <>
 <div class="container-fluid">
 <ul class="list-group">
+    <div ng-repeat="page in model.pages"
     <li class="list-group-item">
-        <a href="../../widget/templates/widget-list.view.client.html">
-            Blog Post
+        <a href="#/user/:uid/website/:wid/page/:pid/widget">
+            {{website.name}}
         </a>
-        <a href="page-edit.view.client.html" class="pull-right">
+        <a href="#/user/:uid/website/:wid/page/:pid" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
     </li>
-    <li class="list-group-item">
-        <a href="../../widget/templates/widget-list.view.client.html">
-           Blogs
-        </a>
-        <a href="page-edit.view.client.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../widget/templates/widget-list.view.client.html">
-            Home
-        </a>
-        <a href="page-edit.view.client.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../widget/templates/widget-list.view.client.html">
-            About
-        </a>
-        <a href="page-edit.view.client.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../widget/templates/widget-list.view.client.html">
-            Contact Us
-        </a>
-        <a href="page-edit.view.client.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
+
 </ul>
 </div>
 
@@ -80,7 +50,7 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="../../user/templates/profile.view.client.html">
+            <a href="#/user/:uid">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 

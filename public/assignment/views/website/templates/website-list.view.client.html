@@ -14,7 +14,7 @@
     <div class="container-fluid bg-primary">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+                <a href="#/user/:uid" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
@@ -25,7 +25,7 @@
         </div>
         <div>
             <p class="navbar-text pull-right">
-                <a href="website-new.html" class="navbar-link">
+                <a href="#/user/:uid/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
@@ -35,39 +35,17 @@
 </nav>
 <div class="container-fluid">
     <ul class="list-group">
-        <div class="row-fluid">
+        <div  class="row-fluid">
+            <div ng-repeat="website in model.websites">
             <li class="list-group-item">
-                <a href="../../../page-list.html">
-                    Address Book App
+                <a href="#/user/:uid/website/:wid/page">
+                    {{website.name}}
                 </a>
-                <a href="website-edit.view.client.html" class="pull-right">
+                <a href="#/user/:uid/website/:wid" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
-            <li class="list-group-item">
-                <a href="../../../page-list.html">
-                    Address Book App
-                </a>
-                <a href="website-edit.view.client.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../../page-list.html">
-                    Address Book App
-                </a>
-                <a href="website-edit.view.client.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../../../page-list.html">
-                    Address Book App
-                </a>
-                <a href="website-edit.view.client.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
+           </div>
         </div>
         </ul>
 
@@ -78,7 +56,7 @@
     <div class="container-fluid bg-primary">
         <div class="navbar-text pull-right">
 
-            <a href="../../user/templates/profile.view.client.html">
+            <a href="#/user/:uid">
                 <span class="glyphicon glyphicon-user" style="color: white"></span>
             </a>
 

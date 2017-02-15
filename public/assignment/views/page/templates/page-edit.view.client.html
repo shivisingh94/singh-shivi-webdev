@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="page-list.html" class="navbar-link">
+            <a href="#/user/:uid/website/:wid/page" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="page-list.html" class="navbar-link">
+            <a ng-click="model.updatePage(page)" href="#/user/:uid/website/:wid/page" class="navbar-link">
                 <span class="glyphicon glyphicon-ok"></span>
                 </span>
             </a>
@@ -33,10 +33,10 @@
 <>
 <div class="container-fluid">
     <label for="name">Name</label>
-    <input class="form-control" id="name" placeholder="Page Name">
+    <input ng-model="model.page.name" class="form-control" id="name" placeholder="Page Name">
     <label for="title">Title</label>
-    <input class="form-control" id="title" placeholder="Page Title">
-    <a class="btn btn-danger btn-block" href="page-list.html">
+    <input ng-model="model.page.description" class="form-control" id="title" placeholder="Page Title">
+    <a ng-click="model.deletePage()" class="btn btn-danger btn-block" href="#/user/:uid/website/:wid/page">
         Delete
     </a>
 
