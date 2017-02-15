@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Page</title>
+    <title>Edit Website</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../../css/style.css" rel="stylesheet"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,31 +12,27 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="page-list.html" class="navbar-link">
+            <a href="widget-list.html" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Edit Page
-            </a>
-        </div>
-        <div class="navbar-text pull-right">
-            <a href="page-list.html" class="navbar-link">
-                <span class="glyphicon glyphicon-ok"></span>
-                </span>
+                Widget Edit
             </a>
         </div>
     </div>
 </nav>
 <>
-<div class="container-fluid">
+<div class="container fluid">
     <label for="name">Name</label>
-    <input class="form-control" id="name" placeholder="Page Name">
-    <label for="title">Title</label>
-    <input class="form-control" id="title" placeholder="Page Title">
-    <a class="btn btn-danger btn-block" href="page-list.html">
+    <input class="form-control" id="name" placeholder="Current widget name">
+    <label for="title">Text</label>
+    <input class="form-control" id="title" placeholder="This is the current page title.">
+    <label for="size">Size</label>
+    <input class="form-control" id="size" placeholder="12">
+    <a class="btn btn-danger btn-block" href="widget-chooser.view.client.html">
         Delete
     </a>
 
@@ -45,15 +41,13 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="profile.html">
+            <a href="../../user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
         </div>
     </div>
 </nav>
-
-
 
 </body>
 </html>

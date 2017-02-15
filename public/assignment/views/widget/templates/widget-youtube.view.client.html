@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit Website</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../../css/style.css" rel="stylesheet"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="widget-list.html" class="navbar-link">
+            <a href="widget-list.view.client.html" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -27,21 +27,24 @@
 <>
 <div class="container fluid">
     <label for="name">Name</label>
-    <input class="form-control" id="name" placeholder="Current widget name">
+    <input class="form-control" id="name" placeholder="">
     <label for="title">Text</label>
-    <input class="form-control" id="title" placeholder="This is the current page title.">
-    <label for="size">Size</label>
-    <input class="form-control" id="size" placeholder="12">
-    <a class="btn btn-danger btn-block" href="widget-chooser.html">
+    <input class="form-control" id="title" placeholder="">
+    <label for="url">URL</label>
+    <input class="form-control" id="url" placeholder="https://www.youtube.com/embed/jIfHdzCeEfc">
+    <label for="url">Width</label>
+    <input class="form-control" id="width" placeholder="100%">
+    <a class="btn btn-danger btn-block" href="widget-chooser.view.client.html">
         Delete
     </a>
 
 </div>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="profile.html">
+            <a href="../../user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 

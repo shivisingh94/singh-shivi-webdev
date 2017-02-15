@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Website</title>
+    <title>Edit Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../../css/style.css" rel="stylesheet"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -19,7 +19,7 @@
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                New Page
+                Edit Page
             </a>
         </div>
         <div class="navbar-text pull-right">
@@ -32,23 +32,28 @@
 </nav>
 <>
 <div class="container-fluid">
-    <label for="name"> Name </label>
+    <label for="name">Name</label>
     <input class="form-control" id="name" placeholder="Page Name">
-    <label for="title"> Title </label>
+    <label for="title">Title</label>
     <input class="form-control" id="title" placeholder="Page Title">
+    <a class="btn btn-danger btn-block" href="page-list.html">
+        Delete
+    </a>
 
 </div>
-
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="profile.html">
+            <a href="../../user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
         </div>
     </div>
 </nav>
+
+
+
 </body>
 </html>

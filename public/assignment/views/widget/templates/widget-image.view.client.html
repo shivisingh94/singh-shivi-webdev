@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit Website</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../../css/style.css" rel="stylesheet"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -31,10 +31,15 @@
     <label for="title">Text</label>
     <input class="form-control" id="title" placeholder="">
     <label for="url">URL</label>
-    <input class="form-control" id="url" placeholder="https://www.youtube.com/embed/jIfHdzCeEfc">
+    <input class="form-control" id="url" placeholder="http://i2.cdn.cnn.com/cnnnext/dam/assets/170123100348-womens-march-washington-exlarge-169.jpg">
     <label for="url">Width</label>
     <input class="form-control" id="width" placeholder="100%">
-    <a class="btn btn-danger btn-block" href="widget-chooser.html">
+    <label for="pic">Upload</label>
+    <input class="file" id="pic" accept="image/*">
+    <a class="btn btn-primary btn-block" href="widget-chooser.view.client.html">
+        Upload Image
+    </a>
+    <a class="btn btn-danger btn-block" href="widget-chooser.view.client.html">
         Delete
     </a>
 
@@ -44,7 +49,7 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="profile.html">
+            <a href="../../user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
