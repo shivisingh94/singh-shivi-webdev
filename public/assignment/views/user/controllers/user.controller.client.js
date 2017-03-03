@@ -14,15 +14,19 @@
         function init() {
 
         }
+
         init();
 
         function login(user) {
-            var user = UserService.findUserByCredentials(user.username, user.password);
-            if(user) {
-                $location.url("/user/"+user._id);
-            } else {
-                vm.error = "User not found";
-            }
+            console.log("in login");
+            var promise = UserService.findUserByCredentials(user.username, user.password);
+            promise.success(function (user) {
+                if (user) {
+                    $location.url("/user/" + user._id);
+                } else {
+                    vm.error = "User not found";
+                }
+            });
         }
     }
 
@@ -30,9 +34,23 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         vm.createUser=createUser;
+        vm.register= register;
+
+        function register(user) {
+            UserService.findUserByUsername(user.username)
+                        .success(function(user) {
+                            vm.message = "That username is already taken";
+                        })
+                        .error(function(err) {
+                            vm.message = "Username available"
+                        })
+        }
 
         function createUser(user) {
-            UserService.createUser(user);
+           var promise =  UserService.createUser(user);
+            promise.success(function(user){
+                vm.user = user;
+                })
         }
 
 
@@ -40,24 +58,29 @@
 
     function profileController($routeParams, UserService) {
         var vm = this;
-
-        vm.userId = $routeParams["uid"];
         vm.updateUser = updateUser;
-
+        var userId = $routeParams['uid'];
+        console.log(userId);
         function init() {
-            vm.user = UserService.findUserById(vm.userId);
-
+            var promise = UserService.findUserById(userId);
+            console.log("Promise up in here" + promise);
+            promise.success(function(user){
+                vm.user = user;
+                console.log("User up in here" + vm.user.username + vm.user.lastName);
+            })
         }
         init();
 
 
-        function updateUser(user) {
-            UserService.updateUser(vm.userId, user);
-
+        function updateUser(newUser) {
+            UserService.updateUser(vm.userId, newUser)
+                .success(function (newUser) {
+                    if(newUser != null){
+                        vm.message = "User Successfully updated!"
+                    } else {
+                        vm.error ="Unable to update user"
+                    }
+                });
         }
-        //function deleteUser() {
-        //    UserService.deleteUser(vm.userId);
-        //}
-
     }
 })();

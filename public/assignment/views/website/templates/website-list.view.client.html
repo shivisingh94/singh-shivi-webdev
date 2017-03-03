@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Website List</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid bg-primary">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/:uid" class="navbar-link">
+                <a href="#/user/{{model.websites.developerId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
@@ -25,7 +14,7 @@
         </div>
         <div>
             <p class="navbar-text pull-right">
-                <a href="#/user/:uid/website/new" class="navbar-link">
+                <a href="#/user/{{model.websites.developerId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
@@ -33,21 +22,24 @@
         </div>
     </div>
 </nav>
+
 <div class="container-fluid">
+    <h1>holder</h1>
+
     <ul class="list-group">
         <div  class="row-fluid">
-            <div ng-repeat="website in model.websites">
-            <li class="list-group-item">
-                <a href="#/user/:uid/website/:wid/page">
-                    {{website.name}}
+            <div>
+            <li ng-repeat= "website in model.websites" class="list-group-item">
+                <a href="#/user/456/website/456/page">
+                   {{website.name}}
                 </a>
-                <a href="#/user/:uid/website/:wid" class="pull-right">
+                <a href="#/user/{{model.websites.developerId}}/website/{{model.websites._id}}" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
            </div>
         </div>
-        </ul>
+    </ul>
 
 </div>
 
@@ -56,13 +48,10 @@
     <div class="container-fluid bg-primary">
         <div class="navbar-text pull-right">
 
-            <a href="#/user/:uid">
+            <a href="#/user/{{model.websites.developerId}}">
                 <span class="glyphicon glyphicon-user" style="color: white"></span>
             </a>
 
         </div>
     </div>
 </nav>
-
-</body>
-</html>

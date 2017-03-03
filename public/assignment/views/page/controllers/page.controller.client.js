@@ -7,12 +7,12 @@
 
 
     function pageListController($routeParams, PageService) {
-        var websiteId = $routeParams["0wid"];
-        var pages = pageService.findPageByWebsiteId(websiteId)
-
         var vm = this;
-        vm.pages = pages;
-
+        var websiteId = $routeParams["wid"];
+        var promise = PageService.findPageByWebsiteId(websiteId);
+        promise.success(function (pages) {
+            vm.pages = pages;
+        })
     }
 
     function newPageController($routeParams, PageService) {
@@ -27,18 +27,22 @@
 
     function editPageController($routeParams, PageService) {
         var vm = this;
-        vm.websiteId = $routeParams["wid"];
         vm.pageId = $routeParams["pid"];
-        vm.createPage = createPage;
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+           var promise= PageService.findPageById(vm.pageId);
+            promise.success(function(page) {
+                vm.page = page;
+                console.log("Page up in here" + vm.page.name + vm.page.description);
+
+            })
         }
 
 
         function updatePage(page) {
-            PageService.updatePage(vm.pageId, page);
+            var promise = PageService.updatePage(vm.pageId, page);
+            promise.success
         }
         function deletePage() {
             PageService.deletePage(vm.pageId);

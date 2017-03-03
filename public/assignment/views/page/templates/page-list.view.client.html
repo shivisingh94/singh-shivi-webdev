@@ -33,16 +33,16 @@
 <>
 <div class="container-fluid">
 <ul class="list-group">
-    <div ng-repeat="page in model.pages"
-    <li class="list-group-item">
+    <div>
+    <li ng-repeat="page in model.pages" class="list-group-item">
         <a href="#/user/:uid/website/:wid/page/:pid/widget">
-            {{website.name}}
+            {{page.name}}
         </a>
         <a href="#/user/:uid/website/:wid/page/:pid" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
     </li>
-
+    </div>
 </ul>
 </div>
 

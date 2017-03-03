@@ -5,14 +5,26 @@
         .controller("NewWebsiteController", newWebsiteController)
         .controller("EditWebsiteController", editWebsiteController);
 
-    function websiteListController($routeParams, UserService) {
+    function websiteListController($routeParams, WebsiteService) {
 
-        var userId = $routeParams["uid"];
-        var websites = websiteService.findAllWebsites(userId);
-
+        console.log("are we in websitelistcontroller");
         var vm = this;
-        vm.websites = websites;
+        var userId = $routeParams["uid"];
         vm.userId = userId;
+        console.log("this is the user id : " + userId);
+        function init()
+        {
+
+            console.log("In the websitelistcontroller init");
+            var promise = WebsiteService.findWebsitesByUser(userId);
+            //console.log("websites tho "+ websites[1]);
+            console.log("websitelistPromise up in here" + promise);
+            promise.success(function(websites){
+                vm.websites = websites;
+            })
+        };
+
+        init();
 
 
     }
@@ -24,7 +36,11 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(website) {
-            WebsiteService.createWebsite(vm.userId, website)
+            var promise = WebsiteService.createWebsite(vm.userId, website);
+            promise.success = (function (website) {
+                vm.website = website;
+
+            })
         }
 
     }
@@ -35,13 +51,17 @@
         vm.websiteId= $routeParams["wid"];
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
+        //vm.findWebsitesByUser = findWebsitesByUser;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            var promise = WebsiteService.findWebsitesByUser(vm.userId);
+            promise.success (function(websites) {
+                vm.websites = websites;
+            })
         }
 
         function updateWebsite(website) {
-            WebsiteService.updateWebsit(vm.websiteId, website);
+            WebsiteService.updateWebsite(vm.websiteId, website);
 
         }
         function deleteWebsite() {

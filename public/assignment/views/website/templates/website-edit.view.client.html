@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Website</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid bg-primary">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#/user/:uid/website" class="navbar-link">
+                <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" style="color:white" href="#/user/:uid/website">
+                <a class="navbar-brand" style="color:white" href="#/user/{{model.websites.developerId}}/website">
                     Websites
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#/user/:uid/website/new" class="navbar-link">
+                <a href="#/user/{{model.websites.developerId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
@@ -32,7 +22,7 @@
         </div>
         <div class="col-sm-8">
             <p class="navbar-text pull-left visible-xs">
-                <a href="#/user/:uid/website" class="navbar-link">
+                <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
@@ -44,7 +34,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#/user/:uid/website" class="navbar-link">
+            <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" style="color:white"></span>
                 </span>
             </a>
@@ -60,46 +50,23 @@
             </div>
 
     <ul class="list-group">
-        <li class="list-group-item">
-            <a href="#/user/:uid/website/:wid/page">
-                Address Book App
+        <li ng-repeat= "website in wmodel.websites" class="list-group-item">
+            <a href="#/user/{{model.websites.developerId}}/website/{{model.websites._id}}/page">
+                {{model.websites.name}}
             </a>
             <a href="website-edit.view.client.html" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
-        <li class="list-group-item">
-            <a href="#/user/:uid/website/:wid/page">
-                Address Book App
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/user/:uid/website/:wid/page">
-                Address Book App
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/user/:uid/website/:wid/page">
-                Address Book App
-            </a>
-            <a href="#/user/:uid/website/:wid/page" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
+
     </ul>
  </div>
-        </div>
+    </div>
 <div class="col-xs-12 col-sm-8 wbdv-right-pane">
     <label for="name">Website Title</label>
-    <input ng-model="model.website.name" class="form-control" id="name" placeholder="Website Title">
+    <input ng-model="model.websites.name" class="form-control" id="name" placeholder="Website Title">
     <label for="description">Website Description</label>
-    <input ng-model="model.website.description" class="form-control" id="description" placeholder="Website Description">
+    <input ng-model="model.websites.description" class="form-control" id="description" placeholder="Website Description">
     <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block" href="#/user/:uid/website">
         Delete Website
     </a>
@@ -117,5 +84,4 @@
         </div>
     </div>
 </nav>
-</body>
 </html>
