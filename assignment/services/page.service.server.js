@@ -9,7 +9,10 @@ module.exports = function(app) {
     var pages = [
         {"_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem"},
         {"_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem"},
-        {"_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem"}
+        {"_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem"},
+        {"_id": "141", "name": "Post 4", "websiteId": "234", "description": "Lorem"},
+        {"_id": "142", "name": "Post 5", "websiteId": "789", "description": "Lorem"},
+        {"_id": "143", "name": "Post 6", "websiteId": "789", "description": "Lorem"}
     ];
 
     function createPage(req, res) {
@@ -19,16 +22,16 @@ module.exports = function(app) {
 
     function findPageByWebsiteId(req, res) {
         var websiteId = req.params.websiteId;
-        var pages = [];
-        console.log("pages " + pages);
+        var pageset = [];
+        console.log("websiteId " + websiteId);
         for (var p in pages) {
             if (websiteId === pages[p].websiteId) {
-                pages.push(pages[p]);
-                console.log(pages[p]);
+                pageset.push(pages[p]);
+                console.log("pageset added :" +pageset[p]);
             }
         }
 
-        res.json(pages);
+        res.json(pageset);
 
     }
 
@@ -67,4 +70,4 @@ module.exports = function(app) {
         }
 
     }
-}
+};

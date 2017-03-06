@@ -7,14 +7,12 @@
 
     function widgetListController($routeParams, WidgetService) {
 
-
-        var userId = $routeParams["uid"];
-        var websites = websiteService.findAllWebsites(userId);
-
         var vm = this;
-        vm.websites = websites;
-        vm.userId = userId;
-
+        var pageId = $routeParams["pid"];
+        var promise = WidgetService.findWidgetsByPageId(pageId);
+        promise.success(function (widgets) {
+            vm.widgets = widgets;
+        })
     }
 
     function newWidgetController($routeParams, WidgetService) {

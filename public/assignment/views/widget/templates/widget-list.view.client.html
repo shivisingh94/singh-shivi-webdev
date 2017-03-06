@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List Widget<title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
@@ -33,10 +23,8 @@
 <div class="row container-fluid">
 
       <ul class="list-group">
-          <li class="list-group-item">
-              <div ng-repeat="widget in model.widgets">
-
-                  <div ng-repeat="widget in widgets">
+          <li ng-repeat="widget in model.widgets" class="list-group-item">
+                  <div ng-switch="widget.widgetType">
                       <div ng-switch-when="HEADING">
                           <ng-include src="'widget-heading.view.client.html'"/>
                       </div>
@@ -47,7 +35,7 @@
                           <ng-include src="'widget-youtube.view.client.html'"/>
                       </div>
                   </div>
-
+              <h1>{{widget.name}}</h1>
                   <div class="jga-toolbar">
               <a href="#/user/:uid/website/:wid/page/:pid/widget/:wgid" class="pull-right">
                   <span class="glyphicon glyphicon-cog"></span>
@@ -56,8 +44,6 @@
                   <span class="glyphicon glyphicon-menu-hamburger"></span>
               </a>
             </div>
-                <h1>{{widget.name}}</h1>
-              </div>
 
           </li>
       </ul>
@@ -84,6 +70,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

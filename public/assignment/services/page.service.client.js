@@ -34,7 +34,7 @@
         }
 
         function updatePage(pageId, page) {
-            return $http.put("/api/page/"+pageId);
+            return $http.put("/api/page/"+pageId, page);
         }
 
         function deletePage(pageId) {

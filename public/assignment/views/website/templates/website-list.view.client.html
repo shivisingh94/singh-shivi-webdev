@@ -1,4 +1,4 @@
-
+<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid bg-primary">
         <div class="navbar-header">
@@ -24,13 +24,13 @@
 </nav>
 
 <div class="container-fluid">
-    <h1>holder</h1>
+<h1> YO </h1>
 
     <ul class="list-group">
         <div  class="row-fluid">
             <div>
             <li ng-repeat= "website in model.websites" class="list-group-item">
-                <a href="#/user/456/website/456/page">
+                <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
                    {{website.name}}
                 </a>
                 <a href="#/user/{{model.websites.developerId}}/website/{{model.websites._id}}" class="pull-right">
@@ -55,3 +55,4 @@
         </div>
     </div>
 </nav>
+</body>

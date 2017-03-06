@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page List</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="row container-fluid">
+    <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="../../website/templates/website-list.view.client.html" class="navbar-link">
+            <a href="#/user/:uid/website/{{model.page.websiteId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -23,22 +12,23 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="page-new.view.client.html" class="navbar-link">
+            <a href="#/user/:uid/website/{{model.page.websiteId}}/page/new" class="navbar-link">
                 <span class="glyphicon glyphicon-plus"></span>
                 </span>
             </a>
         </div>
     </div>
 </nav>
-<>
+
 <div class="container-fluid">
+    <h1> yo </h1>
 <ul class="list-group">
     <div>
     <li ng-repeat="page in model.pages" class="list-group-item">
-        <a href="#/user/:uid/website/:wid/page/:pid/widget">
+        <a href="#/user/234/website/{{page.websiteId}}/page/{{page._id}}/widget">
             {{page.name}}
         </a>
-        <a href="#/user/:uid/website/:wid/page/:pid" class="pull-right">
+        <a href="#/user/234/website/{{page.websiteId}}/page/{{page._id}}" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
     </li>
@@ -57,6 +47,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

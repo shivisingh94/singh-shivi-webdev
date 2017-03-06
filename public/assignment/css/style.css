@@ -2,13 +2,13 @@ input.form-control {
     margin-bottom: 5px;
 }
 
-body {
-    padding-top: 36px;
-}
-
-
-
 /* Prevent word-wrap  */
 .navbar {
     white-space: nowrap;
 }
+
+body {
+    padding-top: 70px;
+}
+
+
