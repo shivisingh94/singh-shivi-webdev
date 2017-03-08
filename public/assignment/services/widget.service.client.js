@@ -10,7 +10,8 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "findAllWidgets": findAllWidgets
         };
         return api;
         //function createWidget(pageId, widget) {
@@ -30,7 +31,9 @@
         function findWidgetsByPageId(pageId) {
           return $http.get("/api/page/"+pageId +"/widget");
         }
-
+        function findAllWidgets(pageId) {
+            return $http.get("/api/page/"+pageId +"/widget/new");
+        }
         function findWidgetById(widgetId) {
             return $http.get("/api/widget/"+widgetId);
         }

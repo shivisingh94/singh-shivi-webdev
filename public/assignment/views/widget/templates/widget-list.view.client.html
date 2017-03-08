@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/:uid/website/:wid/page" class="navbar-link">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#/user/:uid/website/:wid/page/:pid/widget/new" class="navbar-link">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
                 <span class="glyphicon glyphicon-plus"></span>
                 </span>
             </a>
@@ -21,34 +21,69 @@
     </div>
 </nav>
 <div class="row container-fluid">
+<h1>yo</h1>
+      <!--<ul class="list-group">-->
+          <!--<li ng-repeat="widget in model.widgets" class="list-group-item">-->
+                  <!--<div ng-switch="widget.widgetType">-->
+                      <!--<div ng-switch-when="HEADING">-->
+                          <!--<ng-include src="'widget-heading.view.client.html'"/>-->
+                      <!--</div>-->
+                      <!--<div ng-switch-when="IMAGE">-->
+                          <!--<ng-include src="'widget-image.view.client.html'"/>-->
+                      <!--</div>-->
+                      <!--<div ng-switch-when="YOUTUBE">-->
+                          <!--<ng-include src="'widget-youtube.view.client.html'"/>-->
+                      <!--</div>-->
+                  <!--</div>-->
+              <!--{{widget.text}}-->
+                  <!--<div class="jga-toolbar">-->
+              <!--<a href="#/user/:uid/website/:wid/page/:pid/widget/:wgid" class="pull-right">-->
+                  <!--<span class="glyphicon glyphicon-cog"></span>-->
+              <!--</a>-->
+              <!--<a href="#/user/:uid/website/:wid/page/:pid/widget/new"  class="pull-right">-->
+                  <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+              <!--</a>-->
+            <!--</div>-->
 
-      <ul class="list-group">
-          <li ng-repeat="widget in model.widgets" class="list-group-item">
-                  <div ng-switch="widget.widgetType">
-                      <div ng-switch-when="HEADING">
-                          <ng-include src="'widget-heading.view.client.html'"/>
-                      </div>
-                      <div ng-switch-when="IMAGE">
-                          <ng-include src="'widget-image.view.client.html'"/>
-                      </div>
-                      <div ng-switch-when="YOUTUBE">
-                          <ng-include src="'widget-youtube.view.client.html'"/>
-                      </div>
-                  </div>
-              <h1>{{widget.name}}</h1>
-                  <div class="jga-toolbar">
-              <a href="#/user/:uid/website/:wid/page/:pid/widget/:wgid" class="pull-right">
-                  <span class="glyphicon glyphicon-cog"></span>
-              </a>
-              <a href="#/user/:uid/website/:wid/page/:pid/widget/new"  class="pull-right">
-                  <span class="glyphicon glyphicon-menu-hamburger"></span>
-              </a>
+          <!--</li>-->
+      <!--</ul>-->
+{{model.widgets}}
+
+   <div id="widget-list">
+        <li ng-repeat="widget in model.widgets" class="list-group-item">
+            <div ng-switch="widget.widgetType">
+
+                <div ng-switch-when="HEADER">
+                    <h1 ng-if="widget.size == 1">{{widget.text}}</h1>
+                    <h2 ng-if="widget.size == 2">{{widget.text}}</h2>
+                    <h3 ng-if="widget.size == 3">{{widget.text}}</h3>
+                    <h4 ng-if="widget.size == 4">{{widget.text}}</h4>
+                    <h5 ng-if="widget.size == 5">{{widget.text}}</h5>
+                    <h6 ng-if="widget.size == 6">{{widget.text}}</h6>
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <iframe width="100%" ng-src="{{model.doYouTrustUrl(widget.url)}}" frameborder="0"></iframe>
+                </div>
+                <div ng-switch-when="HTML">
+                    <p>{{widget.text}}</p>
+                </div>
+                <div class="jga-toolbar">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"  class="pull-right">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </a>
+                </div>
             </div>
+        </li>
+   </div>
+</div>
 
-          </li>
-      </ul>
 
-    </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
@@ -63,7 +98,7 @@
         </div>
         <div class="navbar-text pull-right">
 
-            <a href="#/login">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
