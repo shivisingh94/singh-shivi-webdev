@@ -19,14 +19,22 @@
     <label for="title">Text</label>
     <input class="form-control" id="title" placeholder="">
     <label for="url">URL</label>
-    <input ng-model="model.url" class="form-control" id="url" placeholder="http://i2.cdn.cnn.com/cnnnext/dam/assets/170123100348-womens-march-washington-exlarge-169.jpg">
+    <input ng-model="{{model.widget.url}}" class="form-control" id="url">
     <label for="url">Width</label>
-    <input ng-model="model.width" class="form-control" id="width" placeholder="100%">
+    <input ng-model="{{model.widget.width}}" class="form-control" id="width">
     <label for="pic">Upload</label>
     <input class="file" id="pic" accept="image/*">
-    <a class="btn btn-primary btn-block" href="#/user/{{model.userId}}/website/{{odel.websiteId}}/page/{{model.pageId}}/widget/new">
-        Upload Image
-    </a>
+
+    <form action="/api/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+    </form>
+
     <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{odel.websiteId}}/page/{{model.pageId}}/widget">
         Delete
     </a>

@@ -6,6 +6,10 @@ module.exports = function(app) {
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.get("/api/page/:pageId/widget/new", findAllWidgets);
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+    app.post("/api/upload", upload.single("myFile"), uploadImage);
+    getWidgetById;
 
     var widgets =
         [
@@ -77,6 +81,15 @@ module.exports = function(app) {
         }
     }
 
+    function getWidgetById(widgetId) {
+        for (var w in widgets) {
+            if (widgets[w]._id == widgetId) {
+               return (widgets[w]);
+            }
+        }
+    }
+
+
     function updateWidget(req, res) {
         var widget = req.body;
         var widgetId = req.params.wigetId;
@@ -101,4 +114,32 @@ module.exports = function(app) {
         }
 
     }
+    function uploadImage(req, res) {
+        console.log("in upload image server")
+
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+
+        var userId = req.body.userId;
+        var websiteId = req.params.websiteId;
+        console.log("websiteID in widget.service is " + websiteId);
+        var pageId = req.body.pageId;
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        console.log("widgetId  for widget " + widgetId);
+        var widget = getWidgetById(widgetId);
+        console.log(widget);
+        widget.url = '/uploads/'+filename;
+
+        var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+
+        res.redirect(callbackUrl);
+}
 };
