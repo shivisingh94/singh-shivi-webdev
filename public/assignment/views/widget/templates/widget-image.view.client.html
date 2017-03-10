@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Image Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
@@ -24,22 +13,21 @@
         </div>
     </div>
 </nav>
-<>
 <div class="container fluid">
     <label for="name">Name</label>
     <input class="form-control" id="name" placeholder="">
     <label for="title">Text</label>
     <input class="form-control" id="title" placeholder="">
     <label for="url">URL</label>
-    <input ng-model="model.user.url" class="form-control" id="url" placeholder="http://i2.cdn.cnn.com/cnnnext/dam/assets/170123100348-womens-march-washington-exlarge-169.jpg">
+    <input ng-model="model.url" class="form-control" id="url" placeholder="http://i2.cdn.cnn.com/cnnnext/dam/assets/170123100348-womens-march-washington-exlarge-169.jpg">
     <label for="url">Width</label>
-    <input ng-model="model.user.width" class="form-control" id="width" placeholder="100%">
+    <input ng-model="model.width" class="form-control" id="width" placeholder="100%">
     <label for="pic">Upload</label>
     <input class="file" id="pic" accept="image/*">
-    <a class="btn btn-primary btn-block" href="#/user/:uid/website/:wid/page/:pid/widget/new">
+    <a class="btn btn-primary btn-block" href="#/user/{{model.userId}}/website/{{odel.websiteId}}/page/{{model.pageId}}/widget/new">
         Upload Image
     </a>
-    <a class="btn btn-danger btn-block" href="#/user/:uid/website/:wid/page/:pid/widget/new">
+    <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{odel.websiteId}}/page/{{model.pageId}}/widget">
         Delete
     </a>
 
@@ -56,6 +44,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

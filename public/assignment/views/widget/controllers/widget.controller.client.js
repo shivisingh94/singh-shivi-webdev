@@ -75,11 +75,21 @@
 
         vm.pageId = $routeParams["pid"];
         vm.widgetId = $routeParams["wgid"];
+        vm.userId = $routeParams["uid"];
         // event handlers
         vm.deleteWidget = deleteWidget;
         vm.updateWidget = updateWidget;
+        console.log("in edit widget ontroller init");
 
         function init() {
+            var promise = WidgetService.findWidgetById(vm.widgetId);
+            console.log("Promise in widget up in here" + promise);
+            promise.success(function(widget){
+                vm.widget = widget;
+                console.log("in edit widget ontroller init");
+                console.log("Widget up in here" + vm.widget.widgetType + vm.widget._id);
+            })
+
         }
         init();
 

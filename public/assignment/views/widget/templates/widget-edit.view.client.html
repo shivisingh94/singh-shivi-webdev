@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
@@ -30,20 +20,21 @@
         </div>
     </div>
 </nav>
-<>
 <div class="container-fluid">
-
-    <div ng-switch="widget.widgetType">
+    <h1> YO </h1>
+{{model.widget.widgetType}}
+    <div ng-switch="model.widget.widgetType">
         <div ng-switch-when="HEADING">
-            <ng-include src="'widget-heading.view.client.html'"/>
+            <ng-include src="'views/widget/templates/widget-heading.view.client.html'"/>
         </div>
         <div ng-switch-when="IMAGE">
-            <ng-include src="'widget-image.view.client.html'"/>
+            <ng-include src="'views/widget/templates/widget-image.view.client.html'"/>
         </div>
         <div ng-switch-when="YOUTUBE">
-            <ng-include src="'widget-youtube.view.client.html'"/>
+            <ng-include src="'views/widget/templates/widget-ssyoutube.view.client.html'"/>
         </div>
     </div>
+</div>
 
     <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block" href="model.updateWidget(widget)" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
         Delete
@@ -61,8 +52,3 @@
         </div>
     </div>
 </nav>
-
-
-
-</body>
-</html>
