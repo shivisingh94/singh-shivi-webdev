@@ -1,14 +1,22 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget(widget)" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
                 </span>
             </a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 Widget Edit
+                {{model.widget.url}}
+
             </a>
         </div>
     </div>
@@ -19,9 +27,9 @@
     <label for="title">Text</label>
     <input class="form-control" id="title" placeholder="">
     <label for="url">URL</label>
-    <input ng-model="{{model.widget.url}}" class="form-control" id="url">
+    <input ng-model="model.widget.url" class="form-control" id="url">
     <label for="url">Width</label>
-    <input ng-model="{{model.widget.width}}" class="form-control" id="width">
+    <input ng-model="model.widget.width" class="form-control" id="width">
     <label for="pic">Upload</label>
     <input class="file" id="pic" accept="image/*">
 
@@ -35,7 +43,7 @@
         <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
     </form>
 
-    <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{odel.websiteId}}/page/{{model.pageId}}/widget">
+    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
         Delete
     </a>
 

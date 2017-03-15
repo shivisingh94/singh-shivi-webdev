@@ -76,7 +76,7 @@
     function deleteWebsite(req) {
         var websiteId=req.params.websiteId;
         for(var w in websites) {
-            if(website[w]._id == websiteId) {
+            if(websites[w]._id == websiteId) {
                 websites.splice(w,1);
                 break;
             }

@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Heading Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/:uid/website/:wid/page" class="navbar-link">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget(widget)" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
                 </span>
             </a>
         </div>
@@ -23,16 +19,16 @@
             </a>
         </div>
     </div>
-</nav>
-<>
+
 <div class="container fluid">
+    <h1> YO </h1>
     <label for="name">Name</label>
     <input class="form-control" id="name" placeholder="Current widget name">
     <label for="title">Text</label>
-    <input ng-model="model.user.text" class="form-control" id="title" placeholder="This is the current page title.">
+    <input ng-model="model.widget.text" class="form-control" id="title" placeholder="This is the current page title.">
     <label for="size">Size</label>
-    <input ng-model="model.user.size" class="form-control" id="size" placeholder="12">
-    <a class="btn btn-danger btn-block" href="#/user/:uid/website/:wid/page/:pid/widget/new">
+    <input ng-model="model.widget.size" class="form-control" id="size" placeholder="12">
+    <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
         Delete
     </a>
 
@@ -48,6 +44,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

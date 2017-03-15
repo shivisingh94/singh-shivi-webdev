@@ -3,70 +3,71 @@
     <div class="row container-fluid bg-primary">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
+                <a href="#/user/{{model.developerId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" style="color:white" href="#/user/{{model.websites.developerId}}/website">
+                <a class="navbar-brand" style="color:white" href="#/user/{{model.developerId}}/website">
                     Websites
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#/user/{{model.websites.developerId}}/website/new" class="navbar-link">
+                <a href="#/user/{{model.developerId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
             </div>
         </div>
-        <div class="col-sm-8">
-            <p class="navbar-text pull-left visible-xs">
-                <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
-                    </span>
-                </a>
-            </p>
-        </div>
+        <!--<div class="col-sm-8">-->
+            <!--<p class="navbar-text pull-left visible-xs">-->
+                <!--<a href="#/user/{{model.developerId}}/website" class="navbar-link">-->
+                    <!--<span class="glyphicon glyphicon-chevron-left" style="color:white"></span>-->
+                    <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+        <!--</div>-->
         <div class="navbar-header">
-            <a ng-click="model.updateWebsite(website)" class="navbar-brand" style="color:white" href="#">
+            <a class="navbar-brand" style="color:white" href="#">
                 Edit Website
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
+            <a   ng-click="model.updateWebsite(website)" href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" style="color:white"></span>
                 </span>
             </a>
         </div>
     </div>
 </nav>
-<>
+
 <div class="container-fluid">
+    <h1> YO </h1>
+
     <div class="col-sm-4 hidden-xs wbdv-left-pane">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                Application Name
-            </div>
+            console.log("is this even working")
+            {{model.websites}}
+            <!--<div class="panel-heading">-->
+                <!--Application Name-->
+            <!--</div>-->
 
-    <ul class="list-group">
-        <li ng-repeat= "website in wmodel.websites" class="list-group-item">
-            <a href="#/user/{{model.websites.developerId}}/website/{{model.websites._id}}/page">
-                {{model.websites.name}}
-            </a>
-            <a href="website-edit.view.client.html" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
+    <!--<ul class="list-group">-->
+        <li ng-repeat= "website in model.websites" class="list-group-item">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                {{website.name}}
             </a>
         </li>
 
-    </ul>
+    <!--</ul>-->
  </div>
     </div>
 <div class="col-xs-12 col-sm-8 wbdv-right-pane">
     <label for="name">Website Title</label>
-    <input ng-model="model.websites.name" class="form-control" id="name" placeholder="Website Title">
+    <input ng-model="model.website.name" class="form-control" id="name" placeholder="Website Title">
     <label for="description">Website Description</label>
-    <input ng-model="model.websites.description" class="form-control" id="description" placeholder="Website Description">
+    <input ng-model="model.website.description" class="form-control" id="description" placeholder="Website Description">
     <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block" href="#/user/:uid/website">
         Delete Website
     </a>
@@ -84,4 +85,3 @@
         </div>
     </div>
 </nav>
-</html>

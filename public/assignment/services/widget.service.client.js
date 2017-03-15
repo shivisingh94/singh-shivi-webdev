@@ -24,8 +24,16 @@
         //    }
         //}
 
-        function createWidget(pageId) {
-            return $http.post("/api/page/" + pageId +"/widget");
+        function createWidget(pageId,widgetType) {
+            //return $http.post("/api/page/" + pageId +"/widget", widgetType);
+            //console.log("this is createwidget : " + widgetType );
+
+           return $http({
+                method: 'POST',
+                url: "/api/page/" + pageId +"/widget",
+                data: {widgetType : widgetType}
+            })
+            console.log("create widget service ")
 
         }
         function findWidgetsByPageId(pageId) {
@@ -43,6 +51,7 @@
         }
 
         function deleteWidget(widgetId) {
+            console.log("deletewidget in controller")
             return $http.delete("/api/widget/"+widgetId);
         }
 

@@ -54,12 +54,14 @@
         //vm.findWebsitesByUser = findWebsitesByUser;
 
         function init() {
-            var promise = WebsiteService.findWebsitesByUser(vm.userId);
-            promise.success (function(websites) {
-                vm.websites = websites;
+            var promise = WebsiteService.findWebsiteById(vm.websiteId);
+            promise.success (function(website) {
+                vm.website = website;
+                console.log("in the init for website service");
             })
         }
 
+        init();
         function updateWebsite(website) {
             WebsiteService.updateWebsite(vm.websiteId, website);
 

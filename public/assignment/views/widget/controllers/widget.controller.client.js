@@ -40,7 +40,7 @@
 
     }
 
-    function newWidgetController($routeParams, $location, WidgetService) {
+    function newWidgetController($routeParams, $location, WidgetService, $timeout) {
         var vm = this;
         var pageId = $routeParams["pid"];
         var userId = $routeParams["uid"];
@@ -49,6 +49,7 @@
         vm.pageId = pageId;
         vm.userId = userId;
         vm.websiteId= websiteId;
+
 
         // event handlers
         vm.createWidget= createWidget;
@@ -59,13 +60,22 @@
             })
 
 
-        function createWidget(widget) {
-            //var url = ''
-            WidgetService.createWidget(vm.pageId, widget)
-                .then( function(newWidget) {
+        function createWidget(newWidget) {
+            console.log("what is new Widget " + newWidget);
+
+            $timeout(function() {
+                var promise = WidgetService.createWidget(vm.pageId, newWidget);
+                promise.success(function(newWidget) {
                     console.log("in createwidget newwidget" + newWidget);
-            $location.url("/user/${ vm.userId }/website/${ vm.websiteId }/page/${ vm.pageId }/widget/${ newWidget._id }");
-        })
+                    console.log("in create wisget newWidget id" + newWidget._id);
+                    $location.url("/user/"+vm.userId + "/website/"+ vm.websiteId +"/page/"+ vm.pageId + "/widget/"+ newWidget._id);
+
+                })
+            },1000);
+            //console.log("promise in createWidget : " + promise);
+            //promise.then( function(newWidget) {
+            //        var newWidget=res.data;
+                   //})
         }
 
     }
@@ -76,10 +86,11 @@
         vm.pageId = $routeParams["pid"];
         vm.widgetId = $routeParams["wgid"];
         vm.userId = $routeParams["uid"];
+        vm.websiteId = $routeParams["wid"];
         // event handlers
         vm.deleteWidget = deleteWidget;
         vm.updateWidget = updateWidget;
-        console.log("in edit widget ontroller init");
+
 
         function init() {
             var promise = WidgetService.findWidgetById(vm.widgetId);
@@ -87,18 +98,19 @@
             promise.success(function(widget){
                 vm.widget = widget;
                 console.log("in edit widget ontroller init");
-                console.log("Widget up in here" + vm.widget.widgetType + vm.widget._id);
+                console.log("Widget up in here" + vm.websiteId + vm.widget.widgetType + vm.widget._id);
             })
 
         }
         init();
-
-
         function deleteWidget() {
+            console.log("delete widget in controller");
             WidgetService.deleteWidget(vm.widgetId);
         }
-        function updateWidget(widget) {
-            WidgetService.updateWidget(vm.widgetId, widget);
+        function updateWidget() {
+            WidgetService.updateWidget(vm.widgetId).success(function(widget) {
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            });
 
         }
     }

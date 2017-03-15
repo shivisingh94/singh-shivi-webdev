@@ -64,8 +64,8 @@
                 <div ng-switch-when="IMAGE">
                     <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
                 </div>
-                <div ng-switch-when="YOUTUBE">
-                    <iframe width="100%" ng-src="{{model.doYouTrustUrl(widget.url)}}" frameborder="0"></iframe>
+                <div ng-switch-when="YOUTUBE" class="youtube-widget">
+                    <iframe ng-src="{{model.doYouTrustUrl(widget.url)}}"></iframe>
                 </div>
                 <div ng-switch-when="HTML">
                     <p>{{widget.text}}</p>

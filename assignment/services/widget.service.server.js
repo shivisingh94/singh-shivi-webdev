@@ -43,15 +43,38 @@ module.exports = function(app) {
         ];
 
     function createWidget(req, res) {
-        var widget = req.body;
+        var widgetType= req.body.widgetType;
         var pageId = req.params.pageId;
 
-        widget.pageId = pageId;
-        widgets.push( widget );
-        console. log("createWidget " + widget);
-        console. log("widgets length " + widgets.length);
-        res.json(widget);
-    }
+        var widgetId = Math.floor((Math.random()*6)+1);
+        console.log("create widget new widget ID" + widgetId);
+        //var widget = widgets.find(function (widget) {
+        //    return widget._id == widgetId;
+        //});
+        //
+        //if (widget) {
+        //    res.json(false);
+        //} else {
+            var widget = {"_id": widgetId, "widgetType": widgetType, "pageId": pageId};
+            //widget._id = widgetId;
+            //widget.widgetType = widgetType;
+            widgets.push(widget);
+            res.json(widget);
+        }
+
+
+
+        //var widget = req.body;
+        //console.log("create widget actual widget" + widget);
+        //var pageId = req.params.pageId;
+        //widget.pageId = pageId;
+        //
+        //console.log("create widget new widget ID" + widget._id);
+        //widgets.push(widget);
+        //console. log("createWidget " + widget);
+        //console. log("widgets length " + widgets.length);
+        //res.json(widget);
+
 
     function findAllWidgets(req,res) {
         var page = req.body;
@@ -105,6 +128,7 @@ module.exports = function(app) {
 
     function deleteWidget(req, res) {
         var widgetId = req.params.widgetId;
+        console.log("delete widget server")
         for (var w in widgets) {
             if (widgets[w]._id == widgetId) {
                 widgets.splice(w, 1);
