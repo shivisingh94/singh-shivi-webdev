@@ -13,8 +13,13 @@
             "deleteWebsite": deleteWebsite,
         };
         return api;
-        function createWebsite(userId) {
-          return $http.post("/api/user/" + userId + "/website")
+        function createWebsite(userId, website) {
+            return $http({
+                method: 'POST',
+                url: "/api/user/"+userId+"/website/new",
+                data: {name: website.name,
+                    description: website.description}
+            })
         }
 
         function findWebsitesByUser(userId) {

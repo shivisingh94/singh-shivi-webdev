@@ -3,18 +3,18 @@
     <div class="row container-fluid bg-primary">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#/user/{{model.developerId}}/website" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" style="color:white" href="#/user/{{model.developerId}}/website">
+                <a class="navbar-brand" style="color:white" href="#/user/{{model.userId}}/website">
                     Websites
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#/user/{{model.developerId}}/website/new" class="navbar-link">
+                <a ng-click="model.createWebsite(model.website)" href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
@@ -34,7 +34,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a   ng-click="model.updateWebsite(website)" href="#/user/{{model.websites.developerId}}/website" class="navbar-link">
+            <a   ng-click="model.updateWebsite(model.website)" href="#/user/{{model.userId}}/website" class="navbar-link">
                 <span class="glyphicon glyphicon-ok" style="color:white"></span>
                 </span>
             </a>
@@ -47,13 +47,6 @@
 
     <div class="col-sm-4 hidden-xs wbdv-left-pane">
         <div class="panel panel-primary">
-            console.log("is this even working")
-            {{model.websites}}
-            <!--<div class="panel-heading">-->
-                <!--Application Name-->
-            <!--</div>-->
-
-    <!--<ul class="list-group">-->
         <li ng-repeat= "website in model.websites" class="list-group-item">
             <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
                 {{website.name}}
@@ -68,7 +61,7 @@
     <input ng-model="model.website.name" class="form-control" id="name" placeholder="Website Title">
     <label for="description">Website Description</label>
     <input ng-model="model.website.description" class="form-control" id="description" placeholder="Website Description">
-    <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block" href="#/user/:uid/website">
+    <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website">
         Delete Website
     </a>
 </div>
@@ -78,7 +71,7 @@
     <div class="container-fluid bg-primary">
         <div class="navbar-text pull-right">
 
-            <a href="#/user/:uid">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user" style="color: white"></span>
             </a>
 

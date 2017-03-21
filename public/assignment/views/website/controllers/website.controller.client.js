@@ -16,10 +16,7 @@
         {
 
             console.log("In the websitelistcontroller init");
-            var promise = WebsiteService.findWebsitesByUser(userId);
-            //console.log("websites tho "+ websites[1]);
-            console.log("websitelistPromise up in here" + promise);
-            promise.success(function(websites){
+            WebsiteService.findWebsitesByUser(userId).success(function(websites){
                 vm.websites = websites;
             })
         };
@@ -37,8 +34,8 @@
 
         function createWebsite(website) {
             var promise = WebsiteService.createWebsite(vm.userId, website);
-            promise.success = (function (website) {
-                vm.website = website;
+            promise.success = (function (websites) {
+                vm.website = websites;
 
             })
         }
@@ -55,8 +52,8 @@
 
         function init() {
             var promise = WebsiteService.findWebsiteById(vm.websiteId);
-            promise.success (function(website) {
-                vm.website = website;
+            promise.success (function(websites) {
+                vm.website = websites;
                 console.log("in the init for website service");
             })
         }

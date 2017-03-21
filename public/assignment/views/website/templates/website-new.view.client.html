@@ -2,7 +2,7 @@
     <div class="row container-fluid bg-primary">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#/user/:uid/website" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
                     </span>
                 </a>
@@ -13,88 +13,57 @@
             </a>
         </div>
             <div class="navbar-text pull-right">
-                <a href="#/user/:uid/website/new" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus" style="color:white"></span>
                     </span>
                 </a>
             </div>
         </div>
-        <div class="col-sm-8">
-            <p class="navbar-text pull-left visible-xs">
-                <a href="#/user/:uid" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left" style="color:white"></span>
-                    </span>
-                </a>
-            </p>
-        </div>
+        <!--<div class="col-sm-8">-->
+            <!--<p class="navbar-text pull-left visible-xs">-->
+                <!--<a href="#/user/{{model.userId}}" class="navbar-link">-->
+                    <!--<span class="glyphicon glyphicon-chevron-left" style="color:white"></span>-->
+                    <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+        <!--</div>-->
         <div class="navbar-header">
             <a class="navbar-brand" style="color:white" href="#">
                 New Website
             </a>
             </div>
         <div class="navbar-text pull-right">
-                <a href="#/user/:uid/website" class="navbar-link">
+                <a ng-click="model.createWebsite(model.website)" href="#/user/{{model.userId}}/website" class="navbar-link">
                     <span class="glyphicon glyphicon-ok" style="color:white"></span>
                     </span>
                 </a>
         </div>
     </div>
 </nav>
-<>
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs wbdv-left-pane">
         <div class="panel panel-primary">
         <div class="panel-heading">
             Application Name
         </div>
-
-<ul class="list-group" >
-    <li class="list-group-item">
-        <a href="../../page/templates/page-list.view.client.html">
-            Address Book App
-        </a>
-        <a href="#/user/:uid/website/:wid" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../page/templates/page-list.view.client.html">
-            Address Book App
-        </a>
-        <a href="#/user/:uid/website/:wid" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../page/templates/page-list.view.client.html">
-            Address Book App
-        </a>
-        <a href="#/user/:uid/website/:wid" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-    <li class="list-group-item">
-        <a href="../../page/templates/page-list.view.client.html">
-            Address Book App
-        </a>
-        <a href="#/user/:uid/website/:wid" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-    </li>
-</ul>
+            <ul class="list-group">
+                <div>
+                    <li ng-repeat= "website in model.websites" class="list-group-item">
+                        <a href="#/user/{{model.userId}}/website">
+                            {{website.name}}
+                        </a>
+                    </li>
+                </div>
+            </ul>
         </div>
-
-</div>
+    </div>
 <div class="col-xs-12 col-sm-8 wbdv-right-pane">
 
     <label for="name"> Website Title</label>
     <input ng-model="model.website.name" class="form-control" id="name" placeholder="Website Name">
     <label for="description"> Website Description</label>
     <input ng-model="model.website.description" class="form-control" id="description" placeholder="Website Description">
-    <a ng-click="model.createWebsite(website)" class="btn btn-primary btn-block">
-        Create
-    </a>
-    <a class="btn btn-danger btn-block" href="#/user/:uid/website">
+    <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website">
         Cancel
     </a>
 </div>
