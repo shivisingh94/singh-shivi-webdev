@@ -33,7 +33,6 @@
                 url: "/api/page/" + pageId +"/widget",
                 data: {widgetType : widgetType}
             })
-            console.log("create widget service ")
 
         }
         function findWidgetsByPageId(pageId) {

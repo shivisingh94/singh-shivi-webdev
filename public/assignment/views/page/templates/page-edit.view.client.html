@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../../css/style.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/:uid/website/:wid/page" class="navbar-link">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -23,20 +12,20 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a ng-click="model.updatePage(page)" href="#/user/:uid/website/:wid/page" class="navbar-link">
+            <a ng-click="model.updatePage(model.page)" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                 <span class="glyphicon glyphicon-ok"></span>
                 </span>
             </a>
         </div>
     </div>
 </nav>
-<>
+
 <div class="container-fluid">
     <label for="name">Name</label>
     <input ng-model="model.page.name" class="form-control" id="name" placeholder="Page Name">
     <label for="title">Title</label>
     <input ng-model="model.page.description" class="form-control" id="title" placeholder="Page Title">
-    <a ng-click="model.deletePage()" class="btn btn-danger btn-block" href="#/user/:uid/website/:wid/page">
+    <a ng-click="model.deletePage()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
         Delete
     </a>
 
@@ -45,15 +34,10 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right">
 
-            <a href="../../user/templates/profile.view.client.html">
+            <a href="#/login">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
         </div>
     </div>
 </nav>
-
-
-
-</body>
-</html>

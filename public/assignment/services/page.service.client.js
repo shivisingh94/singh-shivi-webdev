@@ -15,14 +15,14 @@
         };
         return api;
         function createPage(websiteId, page) {
-           return $http.post("/api/website/"+ websiteId +"/page");
-            //if(pages.includes(page)) {
-            //    return false;
-            //} else {
-            //    page.websiteId = websiteId;
-            //    pages.add(page);
-            //    return true;
-            //}
+            console.log("in create page client server " + page.name + " " + page.description);
+            return $http({
+                method: 'POST',
+                url: "/api/website/"+ websiteId +"/page/new",
+                data: {name: page.name,
+                        description: page.description}
+            })
+
         }
 
         function findPageByWebsiteId(websiteId) {
@@ -33,8 +33,12 @@
            return $http.get("/api/page/"+pageId);
         }
 
-        function updatePage(pageId, page) {
-            return $http.put("/api/page/"+pageId, page);
+        function updatePage(pageId,page) {
+            return $http({
+                method: 'PUT',
+                url: "/api/page/"+pageId,
+                data: {page : page}
+            })
         }
 
         function deletePage(pageId) {
