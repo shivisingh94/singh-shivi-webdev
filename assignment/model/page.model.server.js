@@ -70,7 +70,15 @@ module.exports = function () {
     }
 
     function updatePage(pageId, page) {
-    ////
+        var deferred = q.defer();
+        //delete user._id;
+        pageModel
+            .update({_id: pageId}, {
+                $set: page
+            }, function (err, status) {
+                deferred.resolve(status);
+            });
+        return deferred.promise;
 
     }
 

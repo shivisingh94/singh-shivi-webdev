@@ -35,15 +35,14 @@
         vm.createPage = createPage;
         function createPage(page) {
             console.log(" in createpage page.controller");
-            $timeout(function() {
+            //$timeout(function() {
                 var promise = PageService.createPage(vm.websiteId,page);
                 promise.success(function(newPage) {
                     console.log("in createwidget newPage" + newPage);
                     console.log("in create wisget newPage id" + newPage._id);
-                   // $location.url("/user/"+vm.userId + "/website/"+ vm.websiteId +"/page/"+ vm.pageId);
-
-                })
-            },1000);
+                    $location.url("/user/"+vm.userId + "/website/"+ vm.websiteId +"/page/"+ vm.pageId);
+                });
+            //},1000);
 
         }
     }

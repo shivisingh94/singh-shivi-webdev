@@ -30,4 +30,5 @@ module.exports = function(app) {
         formatted: Boolean,
         dateCreated: {type: Date, default: Date.now}
     }, {collection: 'widget.list'});
+
 }

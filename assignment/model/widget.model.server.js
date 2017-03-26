@@ -14,7 +14,8 @@ module.exports = function () {
         "findAllWidgetsForPage": findAllWidgetsForPage,
         "findWidgetById": findWidgetById,
         "updateWidget": updateWidget,
-        "deleteWidget": deleteWidget
+        "deleteWidget": deleteWidget,
+        "getWidgetTypes": getWidgetTypes
         //,
         // "reorderWidget": reorderWidget
     };
@@ -69,9 +70,21 @@ module.exports = function () {
             });
         return deferred.promise;
     }
+    function getWidgetTypes(){
+        var widgetTypes = widgetModel.schema.path('type').enumValues;
+
+        return widgetTypes;
+
+    }
 
     function updateWidget(widgetId, widget) {
-
+        var deferred = q.defer();
+        widgetModel
+            .update({_id:widgetId}, {
+                $set: widget
+            }, function (err, status) {
+                deferred.resolve(status);
+            });
     }
 
     function deleteWidget(widgetId) {

@@ -63,13 +63,10 @@ module.exports = function () {
     function updateWebsite(websiteId, website) {
         var deferred = q.defer();
         websiteModel
-            .update(websiteId, function (err) {
-                if (err) {
-                    deferred.abort();
-                } else {
-                    deferred.resolve();
-                }
-
+            .update({_id:websiteId}, {
+                $set: website
+            }, function (err, status) {
+                deferred.resolve(status);
             });
     }
 

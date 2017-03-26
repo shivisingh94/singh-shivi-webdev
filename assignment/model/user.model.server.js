@@ -69,11 +69,13 @@ module.exports = function () {
     }
 /// need Updat eand delete
     function updateUser(userId,user) {
+        var deferred = q.defer();
+        //delete user._id;
         userModel
-            .findById(userId, function (err, user) {
-            user = user;
-            user.save();
-            deferred.resolve(user);
+            .update({_id: userId}, {
+                $set: user
+            }, function (err, status) {
+            deferred.resolve(status);
         });
         return deferred.promise;
     }
