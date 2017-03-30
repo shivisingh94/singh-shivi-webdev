@@ -6,17 +6,20 @@ module.exports = function () {
     var mongoose = require('mongoose');
     var websiteSchema = require('./website.schema.server.js')();
     var userSchema = require('./user.schema.server.js')();
-
+    //
     var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
-    var userModel = mongoose.model('UserModel', userSchema);
+    //var userModel = mongoose.model('UserModel', userSchema);
+    var userModel = require('./user.model.server').mongooseModel;
+
     var api = {
         "createWebsiteForUser": createWebsiteForUser,
         "findAllWebsitesForUser": findAllWebsitesForUser,
         "findWebsiteById": findWebsiteById,
         "updateWebsite": updateWebsite,
         "deleteWebsite": deleteWebsite,
+        mongooseModel: websiteModel
     };
-    return api;
+    module.exports=api;
 
     function createWebsiteForUser(userId, website) {
         var deferred = q.defer();

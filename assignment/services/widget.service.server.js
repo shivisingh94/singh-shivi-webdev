@@ -1,20 +1,15 @@
-module.exports = function(app) {
+module.exports = function(app, model) {
 
     app.post("/api/page/:pageId/widget", createWidget);
     app.get("/api/page/:pageId/widget", findWidgetByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-    app.get("/api/page/:pageId/widget/new", findAllWidgets);
     var multer = require('multer'); // npm install multer --save
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
     app.post("/api/upload", upload.single("myFile"), uploadImage);
-    getWidgetById;
 
-
-    require('../models/widget.model.server.js')();
     var widgetModel = model.widgetModel;
-
 
     function createWidget(req, res) {
         var widgetType= req.body.widgetType;

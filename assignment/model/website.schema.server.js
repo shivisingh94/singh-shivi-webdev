@@ -2,19 +2,15 @@
  * Created by shivi_star on 3/21/2017.
  */
 module.exports = function(app) {
-    app.post("/api/user/:userId/website/new", createWebsite);
-    app.get("/api/user/:userId/website", findWebsitesByUser);
-    app.get("/api/website/:websiteId",findWebsiteById);
-    app.put("/api/website/:websiteId", updateWebsite);
-    app.delete("/api/website/:websiteId", deleteWebsite);
-
     var mongoose = require('mongoose');
 
     var WebsiteSchema = mongoose.Schema({
-       _user: User,
+       _user: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         name: {type: String, required: true},
         description: String,
-        pages:[Page],
+        pages:[{type: mongoose.Schema.Types.ObjectId, ref: 'PageModel'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: 'website.list'});
+
+    return WebsiteSchema
 }

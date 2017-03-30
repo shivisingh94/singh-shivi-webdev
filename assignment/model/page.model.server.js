@@ -5,9 +5,13 @@ module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var pageSchema = require('./page.schema.server.js')();
+    //var websiteSchema = require('./website.schema.server.js')();
 
-    var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
-    var pageModel = mongoose.model('PagerModel', pageSchema);
+    var websiteModel = require('./website.model.server').mongooseModel;
+
+    //var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
+
+    var pageModel = mongoose.model('PageModel', pageSchema);
 
     var api = {
         "createPage": createPage,
@@ -15,8 +19,9 @@ module.exports = function () {
         "findPageById": findPageById,
         "updatePage": updatePage,
         "deletePage": deletePage,
+        mongooseModel: pageModel
     };
-    return api;
+   module.exports=api;
 
     function createPage(websiteId, page) {
         var deferred = q.defer();

@@ -5,21 +5,23 @@ module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var widgetSchema = require('./widget.schema.server.js')();
-    var pageSchema = require('./page.schema.server.js')();
+   // var pageSchema = require('./page.schema.server.js')();
 
     var widgetModel = mongoose.model('WidgetModel', widgetSchema);
-    var pageModel = mongoose.model('PageModel', pageSchema);
+    var pageModel = require('./page.model.server').mongooseModel;
+
     var api = {
         "createWidget": createWidget,
         "findAllWidgetsForPage": findAllWidgetsForPage,
         "findWidgetById": findWidgetById,
         "updateWidget": updateWidget,
         "deleteWidget": deleteWidget,
-        "getWidgetTypes": getWidgetTypes
+        "getWidgetTypes": getWidgetTypes,
+        mongooseModel: widgetModel
         //,
         // "reorderWidget": reorderWidget
     };
-    return api;
+    module.exports=api;
 
     function createWidget(pageId, widget) {
         var deferred = q.defer();

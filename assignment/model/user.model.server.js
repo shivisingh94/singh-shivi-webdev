@@ -1,4 +1,4 @@
-module.exports = function () {
+//module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var userSchema = require('./user.schema.server.js')();
@@ -11,9 +11,11 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        mongooseModel: userModel
     };
-    return api;
+    //return api;
+    module.exports = api;
 
     function createUser(user) {
         var deferred= q.defer();
@@ -93,5 +95,4 @@ module.exports = function () {
     }
 
 
-};
-
+//};

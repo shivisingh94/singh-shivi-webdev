@@ -1,10 +1,4 @@
 module.exports = function(app) {
-    app.post("/api/user", createUser);
-    app.get("/api/user", findUserByCredentials);
-    app.get("/api/user/:userId", findUserById);
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);
-    app.get("/api/user/:userId", findUser);
 
     var mongoose = require('mongoose');
 
@@ -15,9 +9,11 @@ module.exports = function(app) {
         lastName: String,
         email: String,
         phone: String,
-        websites: [Website],
+        websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: 'user.list'});
+
+    return UserSchema;
 }
 
 

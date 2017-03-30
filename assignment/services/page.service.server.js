@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(app, model) {
 
     app.post("/api/website/:websiteId/page/new", createPage);
     app.get("/api/website/:websiteId/page", findPageByWebsiteId);
@@ -6,8 +6,7 @@ module.exports = function(app) {
     app.put("/api/page/:pageId", updatePage);
     app.delete("/api/page/:pageId", deletePage);
 
-    require('../models/page.model.server.js')();
-    var pageModel=model.pageModel;
+    var pageModel = model.pageModel;
 
     function createPage(req, res) {
         console.log("This is req body " + JSON.stringify(req.body));

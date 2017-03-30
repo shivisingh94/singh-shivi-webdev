@@ -4,9 +4,7 @@ module.exports = function(app, model) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
-    app.get("/api/user/:userId", findUser);
 
-    require('../models/user.model.server.js')();
     var userModel = model.userModel;
 
     function createUser(req,res) {
