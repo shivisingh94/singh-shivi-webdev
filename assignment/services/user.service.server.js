@@ -21,9 +21,7 @@ module.exports = function(app, model) {
     function findUserByCredentials(req, res) {
         var username= req.query.username;
         var password= req.query.password;
-        userModel
-            .findUserByCredentials(username,password)
-            .then(function (user) {
+        userModel.findUserByCredentials(username,password).then(function (user) {
                 res.send(user);
             }, function (err) {
                 res.sendStatus(500).send(err);

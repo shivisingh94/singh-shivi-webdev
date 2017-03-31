@@ -31,6 +31,7 @@
     }
 
     function findUserById(userId) {
+        var deferred= q.defer();
         userModel
             .findById(userId, function
                 (err, status) {
@@ -45,6 +46,7 @@
     }
 
     function findUserByUsername(username) {
+        var deferred= q.defer();
         userModel
             .find({'username': username}, function(err, docs) {
                 if(err){
@@ -58,8 +60,8 @@
     }
 
     function findUserByCredentials(username,password) {
-        userModel
-            .find({'username': username, 'password': password}, function(err,docs) {
+        var deferred= q.defer();
+        userModel.find({'username': username, 'password': password}, function(err,docs) {
                 if(err){
                     deferred.abort();
                 } else {
@@ -69,7 +71,7 @@
             });
         return deferred.promise;
     }
-/// need Updat eand delete
+/// need Update and delete
     function updateUser(userId,user) {
         var deferred = q.defer();
         //delete user._id;
