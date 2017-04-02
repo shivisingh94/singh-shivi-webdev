@@ -1,5 +1,5 @@
 module.exports = function(app, model) {
-    app.post("/api/user",createUser);
+    app.post("/api/user/new",createUser);
     app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
@@ -8,10 +8,12 @@ module.exports = function(app, model) {
     var userModel = model.userModel;
 
     function createUser(req,res) {
-        var user = req.body;
-        userModel
-            .createUser(user)
-            .then(function (status) {
+        var username = req.body.username;
+        var password = req.body.password;
+        var userId = Math.floor((Math.random() * 6) + 1);
+        var user = {"_id": userId, "username": username, "password": password, "firstName":"", "lastName":""};
+
+        userModel.createUser(user).then(function (status) {
                 res.send(status);
             }, function (err) {
                 res.sendStatus(500).send(err);

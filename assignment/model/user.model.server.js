@@ -1,4 +1,4 @@
-//module.exports = function () {
+module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var userSchema = require('./user.schema.server.js')();
@@ -97,4 +97,4 @@
     }
 
 
-//};
+};

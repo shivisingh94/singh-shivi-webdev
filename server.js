@@ -22,8 +22,20 @@ app.set('view engine', 'ejs');
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
+var connectionString = 'mongodb://127.0.0.1:27017/test';
 
-require ("./test/app.js")(app);
+if(process.env.MLAB_USERNAME) {
+    connectionString = process.env.MLAB_USERNAME + ":" +
+        process.env.MLAB_PASSWORD + "@" +
+        process.env.MLAB_HOST + ':' +
+        process.env.MLAB_PORT + '/' +
+        process.env.MLAB_APP_NAME;
+}
+
+var mongoose = require("mongoose");
+mongoose.connect(connectionString);
+
+require ("./test/app.js")(app, mongoose);
 
 //require("./public/assignment/app.js");
 

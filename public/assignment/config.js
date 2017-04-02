@@ -19,11 +19,11 @@
                 controllerAs: "model"
 
             })
-            //.when("/register", {
-            //    templateUrl: "views/user/templates/register.view.client.html",
-            //    controller: "RegisterController",
-            //    controllerAs: "model"
-            //})
+            .when("/register", {
+                templateUrl: "views/user/templates/register.view.client.html",
+                controller: "RegisterController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/website", {
                 templateUrl: "views/website/templates/website-list.view.client.html",
                 controller: "WebsiteListController",

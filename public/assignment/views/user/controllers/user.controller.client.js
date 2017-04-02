@@ -30,30 +30,48 @@
         }
     }
 
-    function registerController($routeParams, UserService) {
+    function registerController($location, $routeParams, UserService) {
         var vm = this;
         vm.userId = $routeParams["uid"];
-        vm.createUser=createUser;
-        vm.register= register;
+        vm.createUser = createUser;
 
-        function register(user) {
-            UserService.findUserByUsername(user.username)
-                        .success(function(user) {
-                            vm.message = "That username is already taken";
-                        })
-                        .error(function(err) {
-                            vm.message = "Username available"
-                        })
-        }
+       // vm.register = register;
+        //
+        //function register(user) {
+        //    UserService.findUserByUsername(user.username)
+        //                .success(function(user) {
+        //                    vm.message = "That username is already taken";
+        //                })
+        //                .error(function(err) {
+        //                    vm.message = "Username available"
+        //                })
+        //}
 
         function createUser(user) {
-           var promise =  UserService.createUser(user);
-            promise.success(function(user){
-                vm.user = user;
-                })
+
+            UserService.createUser(user);
+            $location.url("#/login");
+
+
+            //UserService.findUserByUsername(user.username)
+            //    .success(function (err) {
+            //        vm.message = "That username is already taken";
+            //    })
+            //    .error(function (user) {
+            //        vm.message = "Username available";
+            //        UserService.createUser(user);
+            //        $location.url("#/login");
+            //
+            //    })
+
+            //   var promise =  UserService.createUser(user);
+            //    promise.success(function(user){
+            //        vm.user = user;
+            //        })
+            //}
+
+
         }
-
-
     }
 
     function profileController($routeParams, UserService) {
