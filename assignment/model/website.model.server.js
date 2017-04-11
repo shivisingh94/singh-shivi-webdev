@@ -20,6 +20,7 @@ module.exports = function () {
         mongooseModel: websiteModel
     };
     module.exports=api;
+    return api;
 
     function createWebsiteForUser(userId, website) {
         var deferred = q.defer();
@@ -37,11 +38,11 @@ module.exports = function () {
     function findAllWebsitesForUser(userId) {
         var deferred = q.defer();
         websiteModel
-            .find({'_user': userId}, function (err, docs) {
+            .findOne({'_user': userId}, function (err, status) {
                 if (err) {
-                    deferred.abort();
+                    deferred.reject(err);
                 } else {
-                    deferred.resolve();
+                    deferred.resolve(status);
                 }
 
             });
@@ -51,11 +52,11 @@ module.exports = function () {
     function findWebsiteById(websiteId) {
         var deferred = q.defer();
         websiteModel
-            .findById(websiteId, function (err, docs) {
+            .findById(websiteId, function (err, status) {
                 if (err) {
-                    deferred.abort();
+                    deferred.reject(err);
                 } else {
-                    deferred.resolve();
+                    deferred.resolve(status);
                 }
 
             });
@@ -77,7 +78,7 @@ module.exports = function () {
         var deferred = q.defer();
         userModel.remove({_id: websiteId}, function (err, status) {
             if (err) {
-                deferred.abort(err);
+                deferred.reject(err);
             } else {
                 deferred.resolve(status);
             }

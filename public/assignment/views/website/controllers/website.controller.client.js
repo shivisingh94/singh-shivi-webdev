@@ -18,6 +18,7 @@
             console.log("In the websitelistcontroller init");
             WebsiteService.findWebsitesByUser(userId).success(function(websites){
                 vm.websites = websites;
+                console.log (" there are + "+ vm.websites.size +"websites");
             })
         };
 

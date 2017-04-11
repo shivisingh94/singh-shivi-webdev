@@ -10,8 +10,8 @@ module.exports = function(app, model) {
     function createUser(req,res) {
         var username = req.body.username;
         var password = req.body.password;
-        var userId = Math.floor((Math.random() * 6) + 1);
-        var user = {"_id": userId, "username": username, "password": password, "firstName":"", "lastName":""};
+        //var userId = Math.floor((Math.random() * 6) + 1);
+        var user = {"username": username, "password": password, "firstName":"", "lastName":""};
 
         userModel.createUser(user).then(function (status) {
                 res.send(status);

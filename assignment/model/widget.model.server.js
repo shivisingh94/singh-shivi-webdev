@@ -22,6 +22,7 @@ module.exports = function () {
         // "reorderWidget": reorderWidget
     };
     module.exports=api;
+    return api;
 
     function createWidget(pageId, widget) {
         var deferred = q.defer();

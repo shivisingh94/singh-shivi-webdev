@@ -77,21 +77,22 @@
     function profileController($routeParams, UserService) {
         var vm = this;
         vm.updateUser = updateUser;
-        var userId = $routeParams['uid'];
+        var userId = $routeParams["uid"];
+        vm._id=userId;
         console.log(userId);
         function init() {
-            var promise = UserService.findUserById(userId);
+            var promise = UserService.findUserById(vm._id);
             console.log("Promise up in here" + promise);
             promise.success(function(user){
                 vm.user = user;
-                console.log("User up in here" + vm.user.username + vm.user.lastName);
+                console.log("User up in here" + vm.user.username + vm.user.lastName +vm._id);
             })
         }
         init();
 
 
         function updateUser(newUser) {
-            UserService.updateUser(vm.userId, newUser)
+            UserService.updateUser(vm._id, newUser)
                 .success(function (newUser) {
                     if(newUser != null){
                         vm.message = "User Successfully updated!"

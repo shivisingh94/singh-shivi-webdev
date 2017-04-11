@@ -13,8 +13,8 @@
         var websiteName = req.body.name;
         var websiteDesc = req.body.description;
         var userId = req.params.userId;
-        var websiteId = Math.floor((Math.random() * 6) + 1);
-        var website = {"_id": websiteId, "name": websiteName, "developerId": userId, "description": websiteDesc};
+        //var websiteId = Math.floor((Math.random() * 6) + 1);
+        var website = {"name": websiteName, "developerId": userId, "description": websiteDesc};
 
         websiteModel
             .createWebsite(websiteId, website)

@@ -14,8 +14,8 @@ module.exports = function(app, model) {
     function createWidget(req, res) {
         var widgetType= req.body.widgetType;
         var pageId = req.params.pageId;
-        var widgetId = Math.floor((Math.random()*6)+1);
-        var widget = {"_id": widgetId, "widgetType": widgetType, "pageId": pageId};
+        //var widgetId = Math.floor((Math.random()*6)+1);
+        var widget = {"widgetType": widgetType, "pageId": pageId};
 
         widgetModel
             .createWidget(pageId, widget)

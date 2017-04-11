@@ -13,8 +13,8 @@ module.exports = function(app, model) {
         var websiteId = req.params.websiteId;
         var pageName= req.body.name;
         var pageDesc = req.body.description;
-        var pageId = Math.floor((Math.random()*6)+1);
-        var page = {"_id": pageId, "name": pageName, "websiteId":websiteId, "description": pageDesc};
+       // var pageId = Math.floor((Math.random()*6)+1);
+        var page = {"name": pageName, "websiteId":websiteId, "description": pageDesc};
 
         pageModel
             .createPage(page)

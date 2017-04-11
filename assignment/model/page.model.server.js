@@ -21,7 +21,8 @@ module.exports = function () {
         "deletePage": deletePage,
         mongooseModel: pageModel
     };
-   module.exports=api;
+    module.exports=api;
+    return api;
 
     function createPage(websiteId, page) {
         var deferred = q.defer();
