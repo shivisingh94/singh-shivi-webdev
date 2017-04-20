@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/post/" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Edit Post
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updatePost(model.post)" href="#/user/{{model.userId}}/post" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="body" class="container-fluid">
+    <label for="name">Name</label>
+    <input ng-model="model.post.name" class="form-control" id="name" placeholder="Post caption">
+    <label for="caption">Caption</label>
+    <input ng-model="model.post.caption" class="form-control" id="caption" placeholder="Post caption">
+    <label for="url">URL</label>
+    <input ng-model="model.post.url" class="form-control" id="url" placeholder="Picture to post">
+
+    <a ng-click="model.deletePage()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/post">
+        Delete
+    </a>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/login">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>
+

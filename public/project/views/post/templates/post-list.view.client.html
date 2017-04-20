@@ -1,0 +1,66 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Posts
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/post/new" class="navbar-link">
+                <span class="glyphicon glyphicon-plus"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="body" class="container">
+<ul class="list-group">
+    <!--<div class="card" ng-repeat="post in model.posts" style="width: 20rem;">-->
+        <!--<img class="card-img-top" src="{{post.url}}" alt="Card image cap">-->
+        <!--<div class="card-block">-->
+            <!--<h4 class="card-title">{{post.name}}</h4>-->
+            <!--<p class="card-text">{{post.caption}}</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div>-->
+    <li ng-repeat="post in model.posts" class="list-group-item">
+
+        <p style="text-align:center"><iframe src="{{post.url}}" width="400" height="200"></iframe></p>
+
+     <div style="text-align:center">
+        <a href="#/user/{{model.userId}}/post/{{post._id}}/comment">
+            {{post.caption}}
+        </a>
+
+        <a href="#/user/{{model.userId}}/post/{{post._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+     </div>
+        <div>
+            <a ng-click="model.addAdopter()" class="btn btn-success btn-block" href="#/user/{{model.userId}}/post">
+                Adopt
+            </a>
+        </div>
+    </li>
+</ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

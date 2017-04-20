@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/post/{{model.postId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Edit Comment
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateComment(model.comment)" href="#/user/{{model.userId}}/post/{{model.postId}}/comment" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="body" class="container-fluid">
+    <label for="comment"></label>
+    <input ng-model="model.comment.content" class="form-control" id="comment" placeholder="Post Comment">
+
+    <a ng-click="model.deleteComment()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/post/{{model.postId}}">
+        Delete
+    </a>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/login">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

@@ -39,8 +39,10 @@ require ("./test/app.js")(app, mongoose);
 
 //require("./public/assignment/app.js");
 
-var assignment = require("./assignment/app.js");
-assignment(app);
+//var assignment = require("./assignment/app.js");
+//assignment(app);
+var project = require("./project/app.js")
+project(app);
 
 var port = process.env.PORT || 3000;
 

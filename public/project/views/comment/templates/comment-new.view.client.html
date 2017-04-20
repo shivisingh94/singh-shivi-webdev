@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/post/{{model.postId}}/comment" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+           <h2>New Page</h2>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.createComment(model.comment)" href="#/user/{{model.userId}}/post/{{model.postId}}/comment" class="navbar-link">
+                <span class="glyphicon glyphicon-ok"></span>
+                </span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+<div id="body" class="container-fluid">
+    <h1>yo</h1>
+    <label for="name"> Content </label>
+    <input ng-model="model.comment.content" class="form-control" id="name" placeholder="Page Name">
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/login">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

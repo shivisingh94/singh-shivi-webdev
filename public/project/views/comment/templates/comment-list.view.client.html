@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}/post/{{model.postId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+               Comments
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/post/{{model.postId}}/comment/new" class="navbar-link">
+                <span class="glyphicon glyphicon-plus"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="body" class="container-fluid">
+<ul class="list-group">
+    <div>
+    <li ng-repeat="comment in model.comments" class="list-group-item">
+        <a>
+            {{comment.content}}
+        </a>
+        <a href="#//user/{{model.userId}}/post/{{model.postId}}/comment/{{comment._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+    </li>
+    </div>
+</ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>
