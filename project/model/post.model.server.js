@@ -1,28 +1,35 @@
 /**
  * Created by shivi_star on 4/15/2017.
  */
-module.exports = function () {
+// module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var postSchema = require('./post.schema.server.js')();
     var postModel = mongoose.model('PostModel', postSchema);
 
    //var postModel = require('./post.model.server').mongooseModel;
-    var commentModel = require('./comment.model.server').mongooseModel;
-    var userProjModel= require('./userproj.model.server').mongooseModel;
+    var commentModel = require('./comment.model.server');
+    var userProjModel= require('./userproj.model.server');
     console.log("loading var" + userProjModel);
 
-    var api = {
-        "createPost": createPost,
-        "findAllPostsForUser": findAllPostsForUser,
-        "findPostById": findPostById,
-        "updatePost": updatePost,
-        "deletePost": deletePost,
-        "addAdopter": addAdopter,
-        mongooseModel: postModel
-    };
+    postModel.createPost = createPost;
+    postModel.findAllPostsForUser = findAllPostsForUser;
+    postModel.findPostById = findPostById;
+    postModel.updatePost = updatePost;
+    postModel.deletePost = deletePost;
+    postModel.addAdopter = addAdopter;
+
+    // var api = {
+    //     "createPost": createPost,
+    //     "findAllPostsForUser": findAllPostsForUser,
+    //     "findPostById": findPostById,
+    //     "updatePost": updatePost,
+    //     "deletePost": deletePost,
+    //     "addAdopter": addAdopter,
+    //     mongooseModel: postModel
+    // };
    // module.exports=api;
-    return api;
+   //  return api;
 
     function createPost(userId, post) {
         var deferred = q.defer();
@@ -135,4 +142,4 @@ module.exports = function () {
 
         return deferred.promise;
     }
-}
+// }

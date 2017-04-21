@@ -12,7 +12,7 @@ module.exports = function(app, model) {
 
 
 
-    var postModel = model.postModel;
+    var postModel = require('../model/post.model.server'); // model.postModel;
 
     function addAdopter(req, res) {
         var userId=req.params.userId;

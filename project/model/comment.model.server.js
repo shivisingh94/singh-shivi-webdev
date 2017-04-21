@@ -1,25 +1,32 @@
 /**
  * Created by shivi_star on 4/15/2017.
  */
-module.exports = function () {
+// module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var commentSchema = require('./comment.schema.server.js')();
     var commentModel = mongoose.model('CommentModel', commentSchema);
 
-    var postModel = require('./post.model.server').mongooseModel;
+    var postModel = require('./post.model.server');
+
+    commentModel.createComment = createComment;
+    commentModel.findAllCommentsForPost = findAllCommentsForPost;
+    commentModel.findCommentById = findCommentById;
+    commentModel.updateComment = updateComment;
+    commentModel.deleteComment = deleteComment;
+    module.exports = commentModel;
 
     console.log("loading post in comment var" + postModel);
-    var api = {
-        "createComment": createComment,
-        "findAllCommentsForPost": findAllCommentsForPost,
-        "findCommentById": findCommentById,
-        "updateComment": updateComment,
-        "deleteComment": deleteComment,
-        mongooseModel: commentModel
-    };
-    module.exports=api;
-    return api;
+    // var api = {
+    //     "createComment": createComment,
+    //     "findAllCommentsForPost": findAllCommentsForPost,
+    //     "findCommentById": findCommentById,
+    //     "updateComment": updateComment,
+    //     "deleteComment": deleteComment,
+    //     mongooseModel: commentModel
+    // };
+    // module.exports=api;
+    // return api;
 
     function createComment(postId, comment) {
         var deferred = q.defer();
@@ -97,4 +104,4 @@ module.exports = function () {
             });
         return deferred.promise;
     }
-}
+// }

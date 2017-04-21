@@ -1,11 +1,11 @@
-module.exports = function(app, model) {
+module.exports = function(app) {//}, model) {
     app.post("/api/user/new",createUser);
     app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
 
-    var userModel = model.userProjModel;
+    var userModel = require('../model/userproj.model.server');// model.userProjModel;
 
     function createUser(req,res) {
         var username = req.body.username;

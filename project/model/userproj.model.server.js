@@ -1,22 +1,31 @@
-module.exports = function () {
+// module.exports = function () {
     var q = require('q');
     var mongoose = require('mongoose');
     var userSchema = require('./userproj.schema.server.js')();
 
     var userProjModel = mongoose.model('userProjModel', userSchema);
-console.log("userprojmodel in userproj "+ userProjModel);
-    var api = {
-        createUser: createUser,
-        findUserById: findUserById,
-        findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials,
-        updateUser: updateUser,
-        deleteUser: deleteUser,
-        mongooseModel: userProjModel
-    };
 
-    module.exports = api;
-    return api;
+    userProjModel.createUser = createUser;
+    userProjModel.findUserById = findUserById;
+    userProjModel.findUserByUsername = findUserByUsername;
+    userProjModel.findUserByCredentials = findUserByCredentials;
+    userProjModel.updateUser = updateUser;
+    userProjModel.deleteUser = deleteUser;
+    module.exports = userProjModel;
+
+    console.log("userprojmodel in userproj "+ userProjModel);
+    // var api = {
+    //     createUser: createUser,
+    //     findUserById: findUserById,
+    //     findUserByUsername: findUserByUsername,
+    //     findUserByCredentials: findUserByCredentials,
+    //     updateUser: updateUser,
+    //     deleteUser: deleteUser,
+    //     mongooseModel: userProjModel
+    // };
+
+    // module.exports = api;
+    // return api;
     function createUser(user) {
         var deferred= q.defer();
         userProjModel.create(user, function(err,doc) {
@@ -97,4 +106,4 @@ console.log("userprojmodel in userproj "+ userProjModel);
     }
 
 
-};
+// };

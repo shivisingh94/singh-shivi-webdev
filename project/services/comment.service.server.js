@@ -1,7 +1,7 @@
 /**
  * Created by shivi_star on 4/16/2017.
  */
-module.exports = function(app, model) {
+module.exports = function(app) {//, model) {
 
     app.post("/api/post/:postId/comment/new", createComment);
     app.get("/api/post/:postId/comment", findCommentByPostId);
@@ -9,7 +9,7 @@ module.exports = function(app, model) {
     app.put("/api/comment/:commentId", updateComment);
     app.delete("/api/comment/:commentId", deleteComment);
 
-    var commentModel = model.commentModel;
+    var commentModel = require('../model/comment.model.server');// model.commentModel;
 
     function createComment(req, res) {
         var postId = req.params.postId;
