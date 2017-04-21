@@ -12,7 +12,9 @@ module.exports = function(app) {
         picture: String,
         friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'userProjModel'}],
        // websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
-        posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
+        //posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
+        posts: [{type:String}],
+        postsLiked: [{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: 'userproj.list'});
 

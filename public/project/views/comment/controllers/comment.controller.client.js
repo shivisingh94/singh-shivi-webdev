@@ -23,18 +23,15 @@
 
     }
 
-    function newCommentController($routeParams, CommentService, $location) {
+    function newCommentController($routeParams, CommentService) {
         var vm = this;
         var postId = $routeParams["pid"];
         var userId = $routeParams["uid"];
-        vm. postId=postId;
+        vm.postId=postId;
         vm.userId=userId;
-        vm.createPage = createPage;
+        vm.createComment = createComment;
         function createComment(comment) {
-                var promise = CommentService.createComment(vm.postId,comment);
-                promise.success(function(newComment) {
-                    $location.url("/user/"+vm.userId + "/post/"+ vm.postId +"/comment/");
-                });
+           CommentService.createComment(vm.postId,comment);
 
         }
     }

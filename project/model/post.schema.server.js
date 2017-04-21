@@ -12,6 +12,7 @@ module.exports = function(app) {
         caption: {type:String, required: true},
         _user: {type: String, required: true},
         comments: [{type:String}],
+        likes: [{type:String}],
         datePosted: {type: Date, default: Date.now}
     }, {collection: 'post.list'});
     return PostSchema;

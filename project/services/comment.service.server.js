@@ -3,7 +3,7 @@
  */
 module.exports = function(app, model) {
 
-    app.post("/api/comment/new", createComment);
+    app.post("/api/post/:postId/comment/new", createComment);
     app.get("/api/post/:postId/comment", findCommentByPostId);
     app.get("/api/comment/:commentId", findCommentById);
     app.put("/api/comment/:commentId", updateComment);
@@ -16,9 +16,7 @@ module.exports = function(app, model) {
         var postComment= req.body.content;
         var comment = {"_post":postId, "content": postComment};
 
-        commentModel
-            .createComment(comment)
-            .then(function (status) {
+        commentModel.createComment(postId,comment).then(function (status) {
                 res.send(status);
             }, function (err) {
                 res.sendStatus(500).send(err);

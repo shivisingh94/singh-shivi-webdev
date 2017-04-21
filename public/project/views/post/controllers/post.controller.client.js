@@ -5,11 +5,15 @@
         .controller("NewPostController", newPostController)
         .controller("EditPostController", editPostController);
 
-
     function postListController($routeParams, PostService) {
         var vm = this;
         var userId = $routeParams["uid"];
         vm.userId = userId;
+        vm.addAdopter=addAdopter;
+
+        function addAdopter(userId, postId) {
+            PostService.addAdopter(userId, postId);
+        }
 
        // function init() {
             PostService.findPostByUserId(vm.userId).success(function (posts) {
@@ -19,9 +23,7 @@
 
             })
 
-        function updatePost(post) {
-            PostService.updatePost(vm.postId, post);
-        }
+
             // })
 
           //  init();
@@ -66,7 +68,7 @@
            PostService.updatePost(vm.postId, post);
         }
         function deletePost() {
-            PostService.deletePost(vm.postId);
+            PostService.deletePost(vm.postId, vm.userId);
         }
     }
 

@@ -6,6 +6,7 @@ module.exports = function () {
     var mongoose = require('mongoose');
     var commentSchema = require('./comment.schema.server.js')();
     var commentModel = mongoose.model('CommentModel', commentSchema);
+
     var postModel = require('./post.model.server').mongooseModel;
 
     console.log("loading post in comment var" + postModel);
@@ -23,19 +24,18 @@ module.exports = function () {
     function createComment(postId, comment) {
         var deferred = q.defer();
         commentModel
-            .create(comment, function(err,doc) {
+            .create(comment, function(err,createdcomment) {
                 if(err){
-                    deferred.abort();
+                    deferred.reject();
                 } else {
-                    deferred.resolve();
+                   postModel
+                        .findOne({_id: postId}, function (err,user) {
+                            console.log(post.comments.length);
+                            post.comments.push(createdcomment);
+                            post.save();
+                            deferred.resolve(post);
+                        });
                 }
-
-            });
-        postModel
-            .findById(postId, function (err, post) {
-                post.comments.push(comment);
-                post.save();
-                deferred.resolve(post);
 
             });
 

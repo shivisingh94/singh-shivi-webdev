@@ -15,6 +15,7 @@
             "findPostById": findPostById,
             "updatePost": updatePost,
             "deletePost": deletePost,
+            "addAdopter": addAdopter
         };
         return api;
         function createPost(userId, post) {
@@ -26,6 +27,14 @@
                     caption: post.caption,
                 url: post.url}
     })
+
+        }
+        function addAdopter(userId, postId) {
+            return $http({
+                method: 'PUT',
+                url: "/api/user/" +userId+"/post/"+postId
+               // data: {post : post}
+            })
 
         }
 
@@ -45,8 +54,8 @@
             })
         }
 
-        function deletePost(pageId) {
-            return $http.delete("/api/post/"+postId);
+        function deletePost(postId,userId) {
+            return $http.delete("/api/user/"+userId+"/post/"+postId);
 
         }
     }
