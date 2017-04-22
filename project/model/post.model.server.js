@@ -18,7 +18,7 @@
     postModel.updatePost = updatePost;
     postModel.deletePost = deletePost;
     postModel.addAdopter = addAdopter;
-
+    module.exports = postModel;
     // var api = {
     //     "createPost": createPost,
     //     "findAllPostsForUser": findAllPostsForUser,
@@ -121,8 +121,7 @@
                 }
 
             });
-        commentModel
-            .remove({_post: postId},function (err, status) {
+        commentModel.remove({_post: postId},function (err, status) {
                 if (err) {
                     deferred.abort(err);
                 } else {

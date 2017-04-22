@@ -36,11 +36,16 @@
                     deferred.reject();
                 } else {
                    postModel
-                        .findOne({_id: postId}, function (err,user) {
-                            console.log(post.comments.length);
-                            post.comments.push(createdcomment);
-                            post.save();
-                            deferred.resolve(post);
+                        .findOne({_id: postId}, function (err,post) {
+                           if (err) {
+                               deferred.reject(err);
+                           } else {
+
+                               console.log(post.comments.length);
+                               post.comments.push(createdcomment);
+                               post.save();
+                               deferred.resolve(post);
+                           }
                         });
                 }
 
@@ -52,11 +57,11 @@
     function findAllCommentsForPost(postId) {
         var deferred = q.defer();
         commentModel
-            .find({'_post': postId}, function (err, docs) {
+            .find({'_post': postId}, function (err, status) {
                 if (err) {
-                    deferred.abort();
+                    deferred.reject(err);
                 } else {
-                    deferred.resolve();
+                    deferred.resolve(status);
                 }
 
             });
@@ -65,23 +70,22 @@
 
     function findCommentById(commentId) {
         var deferred = q.defer();
+        commentModel.findById(commentId, function
+            (err, status) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
 
-        commentModel
-            .findById(commentId,function (err, docs) {
-                if (err) {
-                    deferred.abort();
-                } else {
-                    deferred.resolve();
-                }
-
-            });
+        });
         return deferred.promise;
     }
 
     function updateComment(commentId, comment) {
         var deferred = q.defer();
         //delete user._id;
-        commmentModel
+        commentModel
             .update({_id: commentId}, {
                 $set: comment
             }, function (err, status) {
@@ -96,7 +100,7 @@
         commentModel
             .remove({_id: commentId}, function (err, status) {
                 if (err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(status);
                 }

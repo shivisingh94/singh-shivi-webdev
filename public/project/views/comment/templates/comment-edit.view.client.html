@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/{{model.userId}}/post/{{model.postId}}" class="navbar-link">
+            <a href="#/user/{{model.userId}}/post/{{model.postId}}/comment" class="navbar-link">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 </span>
             </a>
@@ -22,9 +22,9 @@
 
 <div id="body" class="container-fluid">
     <label for="comment"></label>
-    <input ng-model="model.comment.content" class="form-control" id="comment" placeholder="Post Comment">
 
-    <a ng-click="model.deleteComment()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/post/{{model.postId}}">
+    <input ng-model="model.comment.content" class="form-control" id="comment" placeholder="Post Comment">
+    <a ng-click="model.deleteComment()" class="btn btn-danger btn-block" href="#/user/{{model.userId}}/post/{{model.postId}}/comment">
         Delete
     </a>
 

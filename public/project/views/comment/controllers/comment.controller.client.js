@@ -64,7 +64,7 @@
             });
         }
         function deleteComment() {
-            PageService.deleteComment(vm.commentId);
+           CommentService.deleteComment(vm.commentId);
         }
     }
 

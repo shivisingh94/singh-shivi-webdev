@@ -3,10 +3,10 @@ module.exports = function (app,model) {
     // var userProjModel = require('./model/userproj.model.server.js')();
     // var postModel = require('./model/post.model.server.js')();
 
-    console.log('before');
-    setTimeout(function(){
-        console.log('after');
-    },500);
+    //console.log('before');
+    //setTimeout(function(){
+    //    console.log('after');
+    //},500);
 
   //  var widgetModel = require('./model/widget.model.server.js')();
   //   var model = {

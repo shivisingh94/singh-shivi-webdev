@@ -36,7 +36,7 @@ module.exports = function(app) {//, model) {
 
     function findCommentById(req, res) {
         var commentId = req.params.commentId;
-        commentModel
+       commentModel
             .findCommentById(commentId)
             .then(function (status) {
                 res.send(status);

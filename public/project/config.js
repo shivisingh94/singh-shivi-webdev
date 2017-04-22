@@ -34,6 +34,11 @@
                 controller: "NewCommentController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/post/:pid/comment/:cid", {
+                templateUrl: "views/comment/templates/comment-edit.view.client.html",
+                controller: "EditCommentController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/post/:pid/comment", {
                 templateUrl: "views/comment/templates/comment-list.view.client.html",
                 controller: "CommentListController",
@@ -52,11 +57,7 @@
                 controllerAs: "model"
             })
 
-            .when("/user/:uid/post/:pid/comment/:cid", {
-                templateUrl: "views/comment/templates/comment-edit.view.client.html",
-                controller: "EditCommentController",
-                controllerAs: "model"
-            })
+
             //.when("/user/:uid/post/:pid/comment/:cid/widget", {
             //    templateUrl: "views/widget/templates/widget-list.view.client.html",
             //    controller: "WidgetListController",
