@@ -56,6 +56,11 @@
                 controller: "PostListController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/search", {
+                templateUrl: "views/search/templates/search-list.view.client.html",
+                controller: "SearchListController",
+                controllerAs: "model"
+            })
 
 
             //.when("/user/:uid/post/:pid/comment/:cid/widget", {

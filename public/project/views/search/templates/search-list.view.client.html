@@ -1,0 +1,92 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Posts
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/search" class="navbar-link">
+                <span class="glyphicon glyphicon-plus"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="body" class="container">
+
+
+    <div id="search">
+        <label for="breed">Breed</label>
+        <input ng-model="model.query.breed" class="form-control" id="breed" placeholder="Enter Dog Breed">
+        <label for="size">Size</label>
+        <input ng-model="model.query.size" class="form-control" id="size" placeholder=" (S=small, M=medium, L=large, XL=extra-large)">
+        <label for="location">Location</label>
+        <input ng-model="model.query.location" class="form-control" id="location" placeholder="Zipcode">
+
+    </div>
+    <div>
+        <a ng-click="model.dogSearch(model.query.breed,model.query.size, model.query.location)" class="btn btn-success btn-block" >
+           Search
+        </a>
+    </div>
+    <div id="posts">
+<ul class="list-group">
+    <!--<div class="card" ng-repeat="post in model.posts" style="width: 20rem;">-->
+        <!--<img class="card-img-top" src="{{post.url}}" alt="Card image cap">-->
+        <!--<div class="card-block">-->
+            <!--<h4 class="card-title">{{post.name}}</h4>-->
+            <!--<p class="card-text">{{post.caption}}</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div>-->
+    <li ng-repeat="dog in model.allDogs" class="list-group-item">
+
+        <div>
+            <a ng-click="addLike(dog)" id="heart" href="#/user/{{model.userId}}/post" class="pull-right" >
+                <span class="glyphicon glyphicon-heart"></span>
+            </a>
+        </div>
+        <p style="text-align:center"><img src="{{dog.media.photos.photo[0].$t}}"/></p>
+     <div style="text-align:center">
+        <a>
+            <ul>
+                {{dog.description.$t}}
+
+
+            </ul>
+
+        </a>
+
+
+     </div>
+        <div>
+            <a ng-click="model.addAdopter(model.userId, post._id)" class="btn btn-success btn-block" href="#/user/{{model.userId}}/post">
+                Adopt
+            </a>
+        </div>
+    </li>
+
+</ul>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+        </div>
+    </div>
+</nav>

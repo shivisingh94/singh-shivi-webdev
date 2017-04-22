@@ -1,30 +1,43 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Web Dev Course Home Page</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<!-- React app will be injected into this element -->
+<div id="app"></div>
 
-    <p>
-        Customize this home page to your linking.
+<!-- JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Material JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<!-- Include bundled JavaScript: -->
+<script src="bundle.js"></script>
+<div class="enter_section">
+    <h1 id="hello"> Hi, I'm Shivi </h1>
+    <p id="site_links">
+        <a href="project/index.html">Project</a>
+        <a id ="resume"> Resume </a>
+        <a href="assignment/index.html">Assignment</a>
+        <a href="https://github.com/shivisingh94/singh-shivi-webdev">GitHub</a>
+
     </p>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.enter_section')
+                .animate({opacity: 0}, 0)
+                .animate({opacity: 1}, 2000);
+    });
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/shivisingh94/singh-shivi-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+</script>
+
 </body>
+
 </html>

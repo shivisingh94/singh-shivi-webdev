@@ -1,0 +1,44 @@
+body{
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    background: url(img/floral_background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size:    cover;
+    -o-background-size:      cover;
+    background-size:         cover;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    margin: 0;
+    letter-spacing: 4px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 100px;
+    text-shadow: 0 0 10px rgba(0,0,0,.4);
+
+}
+
+
+#site_links {
+    font-weight: 400;
+    font-size: 50px;
+    margin-top: 10px;
+}
+#site_links a:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .7);
+}
+
+.enter_section {
+    padding-top: 200px;
+    margin: auto;
+    position: absolute;
+    left:20%;
+    right:  20%;
+    top: 20%;
+    bottom: 20%;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    background:rgba(100,100,100, 0.3);
+}
