@@ -15,7 +15,11 @@ module.exports = function(app) {
         //posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
         posts: [{type:String}],
         postsLiked: [{type: mongoose.Schema.Types.ObjectId, ref: 'postModel'}],
-        dateCreated: {type: Date, default: Date.now}
+        dateCreated: {type: Date, default: Date.now},
+        facebook: {
+            id:    String,
+            token: String
+        }
     }, {collection: 'userproj.list'});
 
     return UserSchema;

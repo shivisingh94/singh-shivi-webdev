@@ -6,15 +6,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //var passport      = require('passport');
-//var cookieParser  = require('cookie-parser');
-//var session       = require('express-session');
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
 //
 //app.use(session({
 //    secret: 'this is the secret',
 //    resave: true,
 //    saveUninitialized: true
 //}));
-//app.use(cookieParser());
+app.use(cookieParser());
+app.use(session({  secret: 'secrets are no fun', // process.env.SESSION_SECRET
+    resave: true,
+    saveUninitialized: true
+}));
 //app.use(passport.initialize());
 //app.use(passport.session());
 
@@ -43,6 +47,10 @@ require ("./test/app.js")(app, mongoose);
 //assignment(app);
 var project = require("./project/app.js")
 project(app);
+var passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;
 

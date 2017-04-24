@@ -5,7 +5,7 @@
         .controller("RegisterController", registerController)
         .controller("ProfileController", profileController);
 
-    function loginController($location, UserService) {
+    function loginController($location, UserService,$rootScope) {
         var vm = this;
 
         // event handlers
@@ -17,18 +17,31 @@
 
         init();
 
+        //function login(user) {
+        //    console.log("in login");
+        //    var promise = UserService.findUserByCredentials(user.username, user.password);
+        //    promise.success(function (user) {
+        //        if (user) {
+        //            $location.url("/user/" + user._id);
+        //        } else {
+        //            vm.error = "User not found";
+        //        }
+        //    });
+        //}
+
         function login(user) {
-            console.log("in login");
-            var promise = UserService.findUserByCredentials(user.username, user.password);
-            promise.success(function (user) {
-                if (user) {
-                    $location.url("/user/" + user._id);
-                } else {
-                    vm.error = "User not found";
-                }
-            });
+            UserService
+                .findUserByCredentials(user.username, user.password)
+                //.login(user)
+                .then(
+                function(response) {
+                    var user = response.data;
+                    $rootScope.currentUser = user;
+                    $location.url("/user/"+user._id);
+                })
         }
-    }
+
+        }
 
     function registerController($location, $routeParams, UserService) {
         var vm = this;
@@ -52,26 +65,27 @@
             UserService.createUser(user);
             $location.url("#/login");
 
-
-            //UserService.findUserByUsername(user.username)
-            //    .success(function (err) {
-            //        vm.message = "That username is already taken";
-            //    })
-            //    .error(function (user) {
-            //        vm.message = "Username available";
-            //        UserService.createUser(user);
-            //        $location.url("#/login");
-            //
-            //    })
-
-            //   var promise =  UserService.createUser(user);
-            //    promise.success(function(user){
-            //        vm.user = user;
-            //        })
-            //}
-
-
         }
+
+        function register(user, validatepassword) {
+            if (!user ||
+                !user.username ||
+                !user.password ||
+                !validatepassword ||
+                user.password !== validatepassword) {
+                vm.error = "Username, Password required. Validation must match";
+                return;
+            }
+            UserService
+                .register(user)
+                .then(
+                function (response) {
+                    var user = response.data;
+                    $rootScope.currentUser = user;
+                    $location.url("/user/");
+                });
+        }
+
     }
 
     function profileController($routeParams, UserService) {
@@ -89,7 +103,16 @@
             })
         }
         init();
-
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                    vm.message = "Logout Successful";
+                });
+        }
 
         function updateUser(newUser) {
             UserService.updateUser(vm._id, newUser)

@@ -11,6 +11,7 @@
     userProjModel.findUserByCredentials = findUserByCredentials;
     userProjModel.updateUser = updateUser;
     userProjModel.deleteUser = deleteUser;
+    userProjModel.findUserByFacebookId= findUserByFacebookId;
     module.exports = userProjModel;
 
     console.log("userprojmodel in userproj "+ userProjModel);
@@ -26,6 +27,10 @@
 
     // module.exports = api;
     // return api;
+
+function findUserByFacebookId(facebookId) {
+    return userProjModel.findOne({'facebook.id': facebookId});
+}
     function createUser(user) {
         var deferred= q.defer();
         userProjModel.create(user, function(err,doc) {

@@ -11,6 +11,8 @@
         vm.userId = userId;
         vm.addAdopter=addAdopter;
         vm.dogSearch=dogSearch;
+
+
         function addAdopter(userId, postId) {
             PostService.addAdopter(userId, postId);
         }
@@ -39,7 +41,7 @@
        // }
     }
 
-    function newPostController($routeParams, PostService) {
+    function newPostController($routeParams, PostService, ExternalService, $rootScope) {
         var vm = this;
         var userId = $routeParams["uid"];
         //var postId = $routeParams["pid"];
@@ -47,9 +49,38 @@
         vm.userId=userId;
         //vm.postId=postId;
         vm.createPost = createPost;
-        function createPost(post) {
-               PostService.createPost(vm.userId,post);
+        vm.searchImage = searchImage;
+        vm.selectPhoto = selectPhoto;
+        vm.getSearchUrl = getSearchUrl;
 
+        function searchImage(searchTerm) {
+            ExternalService
+                .searchPhotos(searchTerm)
+                .then(function(response) {
+                    data = response.data.replace("jsonFlickrApi(","");
+                    data = data.substring(0,data.length - 1);
+                    data = JSON.parse(data);
+                    vm.photos = data.photos;
+                });
+        }
+
+        function selectPhoto(photo) {
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
+            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            PostService.createPost(vm.userId,post);
+            // update Post ul method here
+        }
+        function createPost(post) {
+            if(post.url) {
+                PostService.createPost(vm.userId, post);
+            } else {
+                post.url = $rootScope.searchUrl;
+                PostService.createPost(vm.userId, post);
+            }
+
+        }
+        function getSearchUrl(url) {
+            $rootScope.searchUrl = url;
         }
     }
 

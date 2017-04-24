@@ -1,4 +1,5 @@
 
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="navbar-text pull-left">
@@ -26,8 +27,22 @@
     <label for="caption">Caption</label>
     <input ng-model="model.post.caption" class="form-control" id="caption" placeholder="Post caption">
     <label for="url">URL</label>
-    <input ng-model="model.post.url" class="form-control" id="url" placeholder="article to post">
+    <input ng-model="model.post.url" class="form-control" id="url" placeholder="picture to post">
 
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control">
+        <span class="input-group-btn">
+            <a ng-click="model.searchImage(searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+            <img id="dogImage" ng-click="model.getSearchUrl(this.getAttribute('ng-src'))" onclick="changeUrl(this)"
+                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        </div>
+    </div>
     <a class="btn btn-danger btn-block" href="#/user/{{model.userId}}/post">
         Cancel
     </a>
@@ -44,3 +59,16 @@
         </div>
     </div>
 </nav>
+
+<script> function changeUrl(element) {
+  var txt= element.getAttribute('ng-src');
+
+
+    console.log(txt);
+
+    //console.log(document.getElementById("dogImage").value);
+    document.getElementById("url").value=txt;
+}
+
+window.onload = changeUrl;
+</script>

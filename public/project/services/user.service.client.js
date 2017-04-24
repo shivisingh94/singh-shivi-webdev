@@ -11,7 +11,11 @@
             "findUserByUsername": findUserByUsername,
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "login": login,
+            "logout": logout,
+            "loggedin": loggedin,
+            "register": register
     };
         return api;
         function createUser(user) {
@@ -25,8 +29,20 @@
             })
         }
 
-        function findUserById(userId) {
+        function register(user) {
+            return $http.post("/api/register", user);
+        }
+        function login(user) {
+            return $http.post("/api/login", user);
+        }
+        function loggedin(user) {
+            return $http.get("/api/loggedin", user);
+        }
+        function logout(user) {
+            return $http.post("/api/logout");
+        }
 
+        function findUserById(userId) {
             return $http.get("/api/user/"+userId);
         }
 
