@@ -52,6 +52,7 @@
         vm.searchImage = searchImage;
         vm.selectPhoto = selectPhoto;
         vm.getSearchUrl = getSearchUrl;
+        vm.getAddUrl= getAddUrl;
 
         function searchImage(searchTerm) {
             ExternalService
@@ -74,13 +75,18 @@
             if(post.url) {
                 PostService.createPost(vm.userId, post);
             } else {
-                post.url = $rootScope.searchUrl;
+               // post.url = $rootScope.searchUrl;
                 PostService.createPost(vm.userId, post);
             }
 
         }
-        function getSearchUrl(url) {
-            $rootScope.searchUrl = url;
+        function getAddUrl(url) {
+            vm.post.url = url;
+
+        }
+        function getSearchUrl(photo) {
+           // $rootScope.searchUrl = url;
+            vm.post.url = "https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_s.jpg";
         }
     }
 

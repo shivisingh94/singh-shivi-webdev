@@ -10,6 +10,7 @@
         vm.userId = userId;
         vm.dogSearch=dogSearch;
         vm.addAdopter=addAdopter;
+        vm.addPost = addPost;
         function addAdopter(userId, postId) {
             PostService.addAdopter(userId, postId);
         }
@@ -18,9 +19,17 @@
             ExternalService.dogSearch(breed,size,location).then(function(res) {
 
                 vm.allDogs = res.data.petfinder.pets.pet;
-                console.log(" THE RES THO : "+ vm.allDogs);
+                console.log(res.data);
 
             })
+        }
+        function addPost(dog) {
+            var post = {name:" ", caption:" ", url: dog.media.photos.photo[0].$t};
+           PostService.createPost(vm.userId,post);
+
+
+
+
         }
 
 

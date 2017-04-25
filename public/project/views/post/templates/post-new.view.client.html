@@ -39,7 +39,7 @@
     </div>
     <div class="row">
         <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
-            <img id="dogImage" ng-click="model.getSearchUrl(this.getAttribute('ng-src'))" onclick="changeUrl(this)"
+            <img id="dogImage" ng-click="model.getSearchUrl(photo)" onclick="changeUrl(this)"
                  ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </div>
     </div>
